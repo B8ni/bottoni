@@ -6,8 +6,8 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: B8ni
-description: Open notes.
+title: frabot
+description: Open notes
 github_username: B8ni
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "bottoni"
