@@ -37,7 +37,7 @@ Hope to show it as soon as my current company will make it possible.
 
 It was funny, I accomplished more in that week then in 6 years of try and fail. **But everything died again**.
 
-I was got overwhelmed with work. It pushed me to say goodbye to Machine Learning.
+I got overwhelmed at work. It pushed me to say goodbye to Machine Learning. Another KO.
 You know, when something really interesting you, one day you succeed. **That day is not today**.
 
 After other 5 months, today, I'm back to the mean. To the normality [^3]. I understood that life is not easy and is not linear.
