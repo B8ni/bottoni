@@ -28,12 +28,13 @@ That's guided me here.
 
 **5 months ago I restarted again**. The approach to Machine Learning was gradually different and this seems to be very efficient and effective.
 
-I followed [FastAI course](https://course.fast.ai/). In one week a completed all lectures and developed a simple system:
+I followed [FastAI course](https://course.fast.ai/). In one week I completed all lectures and developed a simple system:
 - a box classifier which identified the kind of box with an accuracy of 97%;
 - a web app, which took a picture, sent it to the model and showed the result;
 - everything deployed in test environment.
 
 Hope to show it as soon as my current company will make it possible.
+
 It was funny, I accomplished more in that week then in 6 years of try and fail. **But everything died again**.
 
 I was got overwhelmed with work. It pushed me to say goodbye to Machine Learning.
@@ -55,23 +56,23 @@ Let me pretend, for a moment, that I will accomplish the following steps.
 
 To be able to mastering Machine Learning with FastAI approach I need to be a practitioner. To be a practitioner a have to do lots practice. To do lots practice a have to spend extra hours. To be able to spend extra hours I have to be motivated. To be motivated I have to be persistent. To be persistent I have to enjoy it.
 
-That's the chain to the heaven.
+That's the chaining rule of the heaven.
 
 > I listen to everything on 1x speed. I admire all you folks that do 1.5x or 2x, but my brain needs time to process the ideas. Sometimes I pause the podcast/audiobook & just reflect on a single sentence for a while. I used to think I need to improve this but now I just accept it.
 
-I'm happy to read this from [Lex Fridman](https://twitter.com/lexfridman/status/1555957433578790915). It means I have to watch Jeremy at 0.5x divided by $10^6$ speed.
+I'm happy to read this from [Lex Fridman](https://twitter.com/lexfridman/status/1555957433578790915). It means I have to watch Jeremy at 0.5x divided by few tens speed.
 
 The approach to learning, as said before, seems working. So that's what I'll do:
 1. Review last notes, if there's something
-2. Watch lecture, first epoch. W/o pausing
-3. Watch lecture, second epoch. Pausing as needed, experimenting, exploring and building (lots of -ing)
+2. Watch lecture, first iteration. All in one breath
+3. Watch lecture, second iteration. Pausing as needed, experimenting, exploring and building (lots of -ing)
 4. Going through FastAI book, kaggle notes and random links [^5]
 5. Do questionnaire and find weakness
-6. Focus on a project, only one. Do it well 
+6. Focus on a project, only one. Do it well
 
-That's wonderful approach doesn't come from my neurons but are suggested by [Radek Osmulski](https://www.goodreads.com/book/show/58213068-meta-learning) and [Jeremy Howard tips](https://www.youtube.com/watch?v=gGxe2mN3kAg). **Yes, it's strange, I bought it. I'm not used to**.
+That's wonderful approach doesn't come from my neurons but are suggested by [Radek Osmulski's book](https://www.goodreads.com/book/show/58213068-meta-learning) and [Jeremy Howard tips](https://www.youtube.com/watch?v=gGxe2mN3kAg). **Yes, it's strange, I bought a book. I'm not used to**.
 
-Additional trick to force me studying is live streaming my session study. **Embarrassing** and funny moment will face.
+Additional and personal trick to force me studying is **live streaming my session study**. **Embarrassing** and funny moment will face.
 
 **Deadline:** end of August 2022.
 
@@ -79,7 +80,7 @@ Additional trick to force me studying is live streaming my session study. **Emba
 
 I'll keep you updated.
 
-Let's start. **Again**.
+Now let's start. **Again**.
 
 ---
 
