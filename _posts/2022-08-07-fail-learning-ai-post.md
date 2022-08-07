@@ -6,7 +6,6 @@ categories: [fastai]
 title: Learning AI And Failing Miserably 
 ---
 
-# Learning AI And Failing Miserably
 ![]({{ site.baseurl }}/images/fail-learning.png "Latest full productivity dekstop setup")
 ## Why another blog post?
 I told you, you had the wrong guy. Anyway, I'll try to answer.
@@ -60,7 +59,7 @@ That's the chain to the heaven.
 
 > I listen to everything on 1x speed. I admire all you folks that do 1.5x or 2x, but my brain needs time to process the ideas. Sometimes I pause the podcast/audiobook & just reflect on a single sentence for a while. I used to think I need to improve this but now I just accept it.
 
-I'm happy to read this from [Lex Fridman](). It means I have to watch Jeremy at 0.5x speed.
+I'm happy to read this from [Lex Fridman](https://twitter.com/lexfridman/status/1555957433578790915). It means I have to watch Jeremy at 0.5x speed.
 
 Additional trick to force me studying is live streaming my session study. Embarrassing and funny moment will face.
 
@@ -82,8 +81,10 @@ I'll keep you updated.
 
 Let's start. Again.
 
+---
+
 [^1]: Luhmann wrote prolifically, with more than 70 books and nearly 400 scholarly articles published on a variety of subjects
 [^2]: Me and I wrote only this blog post
 [^3]: Standard deviation equals to zero
-[^4]: Entropy
+[^4]: Scientists defined it as Entropy 
 [^5]: Also known as [syntopic](https://notes.andymatuschak.org/z4AgLtg4p63DZdY3p3aTbfR7p8t1gzEL7FHYk) reading
