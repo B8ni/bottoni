@@ -12,7 +12,7 @@ I told you, you had the wrong guy. Anyway, I'll try to answer.
 
 Internet is a fantastic place, you are plugged into a reality where you can learn whatever you want, whenever you want and at you pace.
 
-What I didn't find yet - on web2.0 - is how to fail. How to fail programmatically, periodically and frequently. As you can image, I failed a lot and hope to keep failing at high rate. 
+What I didn't find yet - on web2.0 - is **how to fail**. How to fail programmatically, periodically and frequently. As you can image, I failed a lot and **hope to keep failing at high rate**. 
 
 For me, failing is the essence of learning, the essence of success. The Lhumann's indicator [^1] of productivity was permanent notes produced per day. The Bottoni's indicator [^2] of success is a simple counter of failings: greater the better.  
  
@@ -26,20 +26,20 @@ Everything started long time ago, maybe 6 years ago. I was trying to learning Ma
 
 That's guided me here. 
 
-5 months ago I restarted again. The approach to Machine Learning was gradually different and this seems to be efficient and effective.
+**5 months ago I restarted again**. The approach to Machine Learning was gradually different and this seems to be very efficient and effective.
 
-I followed FastAI course and in one week a completed all lectures. During that week I developed a simple system:
+I followed [FastAI course](https://course.fast.ai/). In one week a completed all lectures and developed a simple system:
 - a box classifier which identified the kind of box with an accuracy of 97%;
 - a web app, which took a picture, sent it to the model and showed the result;
 - everything deployed in test environment.
 
 Hope to show it as soon as my current company will make it possible.
-It was funny, I accomplished more in that week then in 6 years of try and fail. But everything died again.
+It was funny, I accomplished more in that week then in 6 years of try and fail. **But everything died again**.
 
 I was got overwhelmed with work. It pushed me to say goodbye to Machine Learning.
 You know, when something really interesting you, one day you succeed. **That day is not today**.
 
-Today I'm back to the mean, to the normality [^3]. I understood that life is not easy and is not linear.
+After other 5 months, today, I'm back to the mean. To the normality [^3]. I understood that life is not easy and is not linear.
 At the time I'm writing both my sons got Covid19, high fever, zero sleep.
 I understood to embrace those things, the gifts that life give to us [^4]. 
 
@@ -59,11 +59,9 @@ That's the chain to the heaven.
 
 > I listen to everything on 1x speed. I admire all you folks that do 1.5x or 2x, but my brain needs time to process the ideas. Sometimes I pause the podcast/audiobook & just reflect on a single sentence for a while. I used to think I need to improve this but now I just accept it.
 
-I'm happy to read this from [Lex Fridman](https://twitter.com/lexfridman/status/1555957433578790915). It means I have to watch Jeremy at 0.5x speed.
+I'm happy to read this from [Lex Fridman](https://twitter.com/lexfridman/status/1555957433578790915). It means I have to watch Jeremy at 0.5x divided by $10^6$ speed.
 
-Additional trick to force me studying is live streaming my session study. Embarrassing and funny moment will face.
-
-The approach to learning, as said before, seems better. That's what I'll do:
+The approach to learning, as said before, seems working. So that's what I'll do:
 1. Review last notes, if there's something
 2. Watch lecture, first epoch. W/o pausing
 3. Watch lecture, second epoch. Pausing as needed, experimenting, exploring and building (lots of -ing)
@@ -71,7 +69,9 @@ The approach to learning, as said before, seems better. That's what I'll do:
 5. Do questionnaire and find weakness
 6. Focus on a project, only one. Do it well 
 
-That's wonderful approach doesn't come from my neurons but are suggested by [Radek Osmulski](https://www.goodreads.com/book/show/58213068-meta-learning) and [Jeremy Howard tips](https://www.youtube.com/watch?v=gGxe2mN3kAg). Yes, it's strange, I bought it. I'm not used to.
+That's wonderful approach doesn't come from my neurons but are suggested by [Radek Osmulski](https://www.goodreads.com/book/show/58213068-meta-learning) and [Jeremy Howard tips](https://www.youtube.com/watch?v=gGxe2mN3kAg). **Yes, it's strange, I bought it. I'm not used to**.
+
+Additional trick to force me studying is live streaming my session study. **Embarrassing** and funny moment will face.
 
 **Deadline:** end of August 2022.
 
@@ -79,7 +79,7 @@ That's wonderful approach doesn't come from my neurons but are suggested by [Rad
 
 I'll keep you updated.
 
-Let's start. Again.
+Let's start. **Again**.
 
 ---
 
