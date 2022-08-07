@@ -6,7 +6,7 @@ categories: [fastai]
 title: Learning AI: Failing And Failing Miserably 
 ---
 
-# Learning AI: Failing And Failing Miserably
+# Learning AI And Failing Miserably
 ![]({{ site.baseurl }}/images/fail-learning.png "Latest full productivity dekstop setup")
 ## Why another blog post?
 I told you, you had the wrong guy. Anyway, I'll try to answer.
