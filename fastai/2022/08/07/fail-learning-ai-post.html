@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Learning AI And Failing Miserably | frabot</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Learning AI And Failing Miserably" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A minimal guide of failing learning AI." />
+<meta property="og:description" content="A minimal guide of failing learning AI." />
+<link rel="canonical" href="https://b8ni.github.io/bottoni/fastai/2022/08/07/fail-learning-ai-post.html" />
+<meta property="og:url" content="https://b8ni.github.io/bottoni/fastai/2022/08/07/fail-learning-ai-post.html" />
+<meta property="og:site_name" content="frabot" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-07T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Learning AI And Failing Miserably" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-07T00:00:00-05:00","datePublished":"2022-08-07T00:00:00-05:00","description":"A minimal guide of failing learning AI.","headline":"Learning AI And Failing Miserably","mainEntityOfPage":{"@type":"WebPage","@id":"https://b8ni.github.io/bottoni/fastai/2022/08/07/fail-learning-ai-post.html"},"url":"https://b8ni.github.io/bottoni/fastai/2022/08/07/fail-learning-ai-post.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/bottoni/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://b8ni.github.io/bottoni/feed.xml" title="frabot" /><link rel="shortcut icon" type="image/x-icon" href="/bottoni/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/bottoni/">frabot</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/bottoni/about/">About Me</a><a class="page-link" href="/bottoni/search/">Search</a><a class="page-link" href="/bottoni/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Learning AI And Failing Miserably</h1><p class="page-description">A minimal guide of failing learning AI.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-07T00:00:00-05:00" itemprop="datePublished">
+        Aug 7, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/bottoni/categories/#fastai">fastai</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#learning-ai-and-failing-miserably">Learning AI And Failing Miserably</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#why-another-blog-post">Why another blog post?</a></li>
+<li class="toc-entry toc-h2"><a href="#whats-my-next-step">What’s my next step?</a></li>
+</ul>
+</li>
+</ul><h1 id="learning-ai-and-failing-miserably">
+<a class="anchor" href="#learning-ai-and-failing-miserably" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning AI And Failing Miserably</h1>
+<p><img src="/bottoni/images/fail-learning.png" alt="" title="Latest full productivity dekstop setup"></p>
+<h2 id="why-another-blog-post">
+<a class="anchor" href="#why-another-blog-post" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why another blog post?</h2>
+<p>I told you, you had the wrong guy. Anyway, I’ll try to answer.</p>
+
+<p>Internet is a fantastic place, you are plugged into a reality where you can learn whatever you want, whenever you want and at you pace.</p>
+
+<p>What I didn’t find yet - on web2.0 - is how to fail. How to fail programmatically, periodically and frequently. As you can image, I failed a lot and hope to keep failing at high rate.</p>
+
+<p>For me, failing is the essence of learning, the essence of success. The Lhumann’s indicator <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> of productivity was permanent notes produced per day. The Bottoni’s indicator <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> of success is a simple counter of failings: greater the better.</p>
+
+<p>Everything started long time ago, maybe 6 years ago. I was trying to learning Machine Learning the old way:</p>
+<ol>
+  <li>collected all theoretical books;</li>
+  <li>collected all theoretical courses;</li>
+  <li>started the journey;</li>
+  <li>felt uncomfortable;</li>
+  <li>stopped;</li>
+  <li>and repeat the process with a slightly different theoretical book and course.</li>
+</ol>
+
+<p>That’s guided me here.</p>
+
+<p>5 months ago I restarted again. The approach to Machine Learning was gradually different and this seems to be efficient and effective.</p>
+
+<p>I followed FastAI course and in one week a completed all lectures. During that week I developed a simple system:</p>
+<ul>
+  <li>a box classifier which identified the kind of box with an accuracy of 97%;</li>
+  <li>a web app, which took a picture, sent it to the model and showed the result;</li>
+  <li>everything deployed in test environment.</li>
+</ul>
+
+<p>Hope to show it as soon as my current company will make it possible.
+It was funny, I accomplished more in that week then in 6 years of try and fail. But everything died again.</p>
+
+<p>I was got overwhelmed with work. It pushed me to say goodbye to Machine Learning.
+You know, when something really interesting you, one day you succeed. <strong>That day is not today</strong>.</p>
+
+<p>Today I’m back to the mean, to the normality <sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup>. I understood that life is not easy and is not linear.
+At the time I’m writing both my sons got Covid19, high fever, zero sleep.
+I understood to embrace those things, the gifts that life give to us <sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">4</a></sup>.</p>
+
+<p>I’m ready to start again, from chapter 0.</p>
+
+<h2 id="whats-my-next-step">
+<a class="anchor" href="#whats-my-next-step" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s my next step?</h2>
+<p>I restarted ML journey and I’m happy.</p>
+
+<p>During those years full of failures, I sharpened my skills, where I improved a lot, I think.
+From note taking to programming. From learning to memorizing. All is summarized in: be more dynamic and less static.</p>
+
+<p>Let me pretend, for a moment, that I will accomplish the following steps.</p>
+
+<p>To be able to mastering Machine Learning with FastAI approach I need to be a practitioner. To be a practitioner a have to do lots practice. To do lots practice a have to spend extra hours. To be able to spend extra hours I have to be motivated. To be motivated I have to be persistent. To be persistent I have to enjoy it.</p>
+
+<p>That’s the chain to the heaven.</p>
+
+<blockquote>
+  <p>I listen to everything on 1x speed. I admire all you folks that do 1.5x or 2x, but my brain needs time to process the ideas. Sometimes I pause the podcast/audiobook &amp; just reflect on a single sentence for a while. I used to think I need to improve this but now I just accept it.</p>
+</blockquote>
+
+<p>I’m happy to read this from <a href="">Lex Fridman</a>. It means I have to watch Jeremy at 0.5x speed.</p>
+
+<p>Additional trick to force me studying is live streaming my session study. Embarrassing and funny moment will face.</p>
+
+<p>The approach to learning, as said before, seems better. That’s what I’ll do:</p>
+<ol>
+  <li>Review last notes, if there’s something</li>
+  <li>Watch lecture, first epoch. W/o pausing</li>
+  <li>Watch lecture, second epoch. Pausing as needed, experimenting, exploring and building (lots of -ing)</li>
+  <li>Going through FastAI book, kaggle notes and random links <sup id="fnref:5" role="doc-noteref"><a href="#fn:5" class="footnote" rel="footnote">5</a></sup>
+</li>
+  <li>Do questionnaire and find weakness</li>
+  <li>Focus on a project, only one. Do it well</li>
+</ol>
+
+<p>That’s wonderful approach doesn’t come from my neurons but are suggested by <a href="https://www.goodreads.com/book/show/58213068-meta-learning">Radek Osmulski</a> and <a href="https://www.youtube.com/watch?v=gGxe2mN3kAg">Jeremy Howard tips</a>. Yes, it’s strange, I bought it. I’m not used to.</p>
+
+<p><strong>Deadline:</strong> end of August 2022.</p>
+
+<p><strong>I can infinitely try to learn ML and get a finite result, as per <a href="https://en.wikipedia.org/wiki/Zeno%27s_paradoxes">Zeno’s Paradox</a>.</strong></p>
+
+<p>I’ll keep you updated.</p>
+
+<p>Let’s start. Again.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Luhmann wrote prolifically, with more than 70 books and nearly 400 scholarly articles published on a variety of subjects <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Me and I wrote only this blog post <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>Standard deviation equals to zero <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
+      <p>Entropy <a href="#fnref:4" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:5" role="doc-endnote">
+      <p>Also known as <a href="https://notes.andymatuschak.org/z4AgLtg4p63DZdY3p3aTbfR7p8t1gzEL7FHYk">syntopic</a> reading <a href="#fnref:5" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div><a class="u-url" href="/bottoni/fastai/2022/08/07/fail-learning-ai-post.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/bottoni/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/bottoni/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/bottoni/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Open notes</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/b8ni" target="_blank" title="b8ni"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/bot_fra" target="_blank" title="bot_fra"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
