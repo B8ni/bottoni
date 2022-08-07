@@ -3,7 +3,7 @@ toc: true
 layout: post
 description: A minimal guide of failing learning AI.
 categories: [fastai]
-title: Learning AI: Failing And Failing Miserably 
+title: Learning AI And Failing Miserably 
 ---
 
 # Learning AI And Failing Miserably
