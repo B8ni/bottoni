@@ -6,8 +6,8 @@ categories: [fastai]
 title: How Random Forest Can Empower A Small Business 
 ---
 
-![]({{ site.baseurl }}/images/fail-learning.png "Forrest Gump in a Random Forest")
-## Preamble - What I'm trying to achieve
+![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
+## Preamble
 While the entire world is totally captured by Stable Diffusion, I'm experimenting **randomly into the forest of Random Forest**. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually [Forrest](https://en.wikipedia.org/wiki/Forrest_Gump) is winning the game.
 
 ### Why predicting Boxes weight?
@@ -85,7 +85,7 @@ to = TabularPandas(
 ```python
 to.train.xs.iloc[:3]
 ```
-![[Pasted image 20221024142446.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221024142446.png)
 
 >Machine learning models are only as good as the data that is used to train them.
 
@@ -121,7 +121,7 @@ A good error metrics to understand what's going on is a simple ``mean_absolute_e
 from sklearn.metrics import mean_absolute_error
 mean_absolute_error(m.predict(xs), y), mean_absolute_error(m.predict(valid_xs), valid_y)
 ```
-![[Pasted image 20221024142733.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221024142733.png)![[]]
 
 What's ``mean_absolute_error``? Going to the [source code of scikit-learn](https://github.com/scikit-learn/scikit-learn/blob/36958fb24/sklearn/metrics/_regression.py#L141), I found line which calculate MAE:
 ```python
@@ -367,7 +367,7 @@ Retweet, save a life**
 - NN with simplified dataset.
 - Would be nice to add additional information. Start with weather data.
 - Developing an alert system where departments are notified every time the prediction of model is too different from what's happening during the weighting process.
-- Combining CV model with the best model on tabular data.
+- Combining computer vision model with the best model on tabular data.
 
 If you have any suggestions, recommendations, or corrections please reach out to me.
 
