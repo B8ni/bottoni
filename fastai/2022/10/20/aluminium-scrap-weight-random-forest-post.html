@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How Random Forest Can Empower A Small Business | frabot</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="How Random Forest Can Empower A Small Business" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Not so insightful discovery with Random Forest." />
+<meta property="og:description" content="Not so insightful discovery with Random Forest." />
+<link rel="canonical" href="https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" />
+<meta property="og:url" content="https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" />
+<meta property="og:site_name" content="frabot" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-10-20T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How Random Forest Can Empower A Small Business" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-20T00:00:00-05:00","datePublished":"2022-10-20T00:00:00-05:00","description":"Not so insightful discovery with Random Forest.","headline":"How Random Forest Can Empower A Small Business","mainEntityOfPage":{"@type":"WebPage","@id":"https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html"},"url":"https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/bottoni/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://b8ni.github.io/bottoni/feed.xml" title="frabot" /><link rel="shortcut icon" type="image/x-icon" href="/bottoni/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/bottoni/">frabot</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/bottoni/about/">About Me</a><a class="page-link" href="/bottoni/search/">Search</a><a class="page-link" href="/bottoni/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How Random Forest Can Empower A Small Business</h1><p class="page-description">Not so insightful discovery with Random Forest.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-20T00:00:00-05:00" itemprop="datePublished">
+        Oct 20, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      10 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/bottoni/categories/#fastai">fastai</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#preamble---what-im-trying-to-achieve">Preamble - What I’m trying to achieve</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#why-predicting-boxes-weight">Why predicting Boxes weight?</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#first-round">First Round</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#preprocessing">Preprocessing</a></li>
+<li class="toc-entry toc-h3"><a href="#fitting">Fitting</a></li>
+<li class="toc-entry toc-h3"><a href="#out-of-bag-error">Out Of Bag Error</a></li>
+<li class="toc-entry toc-h3"><a href="#intermediate-result">Intermediate Result</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#second-round">Second Round</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#feature-importances">Feature Importances</a></li>
+<li class="toc-entry toc-h3"><a href="#data-points-based-on-their-similarities">Data points based on their Similarities</a></li>
+<li class="toc-entry toc-h3"><a href="#intermediate-result-1">Intermediate Result</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#third-round">Third Round</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#out-of-domain-data">Out-of-Domain Data</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#ko">KO</a></li>
+<li class="toc-entry toc-h2"><a href="#open-points">Open Points</a></li>
+<li class="toc-entry toc-h2"><a href="#whats-next">What’s Next?</a></li>
+</ul><p><img src="/bottoni/images/fail-learning.png" alt="" title="Forrest Gump in a Random Forest"></p>
+<h2 id="preamble---what-im-trying-to-achieve">
+<a class="anchor" href="#preamble---what-im-trying-to-achieve" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preamble - What I’m trying to achieve</h2>
+<p>While the entire world is totally captured by Stable Diffusion, I’m experimenting <strong>randomly into the forest of Random Forest</strong>. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually <a href="https://en.wikipedia.org/wiki/Forrest_Gump">Forrest</a> is winning the game.</p>
+
+<h3 id="why-predicting-boxes-weight">
+<a class="anchor" href="#why-predicting-boxes-weight" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why predicting Boxes weight?</h3>
+<p>It’s hard to fight entropy in my house. 
+It’s exponentially hard to fight entropy in a plant, in an Aluminium plant precisely.</p>
+
+<p>The factory would gain lots of benefits when scraps are segregated, weighted and labeled properly<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.
+Better the process and higher the impact on the revenue of the company (true story).</p>
+
+<p>The weighting process is simple: take the box, put it on an industrial scale, get the weight and repeat.</p>
+
+<p>The weighting process, although heavily based on an inductive flow, it’s not enough. The operators have still room of errors.
+How can I solve this problem, without spending lot’s of money? How can I monitoring the situation and eventually notify others departments? 
+Wrong answers only: Aluminium scarps data and Random Forest.</p>
+
+<p>I concluded that Boxes due of limited types of them, can be solved or partially solved with a classification model.</p>
+
+<p>Now let’s see which one better performs.</p>
+
+<p><strong>put a funny image here</strong></p>
+
+<h2 id="first-round">
+<a class="anchor" href="#first-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>First Round</h2>
+<p><strong>Model:</strong> Random Forest Classifier.
+<strong>Dataset:</strong> Extended. CSV file, 82k rows and 33 columns.
+<strong>Verbose:</strong> I’ve joined most interesting tables, adding intentionally duplicated or closely correlated columns. May increase the noise but may drive to a better prediction as well.</p>
+
+<h3 id="preprocessing">
+<a class="anchor" href="#preprocessing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preprocessing</h3>
+<p>Since I already worked with this data, I found a subtle feature, which is a calculated field where would create lots of trouble in production environment.
+<code class="language-plaintext highlighter-rouge">net_weight</code> is accused of Data Leakage so I firstly dropped it.</p>
+
+<p>Obviously, Data Leakage is an issue faced quite the end of experimentation but, IMHO, earlier you find and better it is. It’s mean you understand enough the dataset.</p>
+
+<p>Via <code class="language-plaintext highlighter-rouge">Categorify</code>, <code class="language-plaintext highlighter-rouge">FillMissing</code>, <code class="language-plaintext highlighter-rouge">cont_cat_split</code> and <code class="language-plaintext highlighter-rouge">RandomSplitter</code> functions, the data is ready to be fitted.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.tabular.all</span> <span class="kn">import</span> <span class="n">Categorify</span><span class="p">,</span> <span class="n">FillMissing</span><span class="p">,</span> <span class="n">cont_cat_split</span><span class="p">,</span> <span class="n">RandomSplitter</span>
+<span class="n">dep</span> <span class="o">=</span> <span class="s">"tare_weight"</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="s">"net_weight"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">procs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Categorify</span><span class="p">,</span> <span class="n">FillMissing</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cont</span><span class="p">,</span><span class="n">cat</span> <span class="o">=</span> <span class="n">cont_cat_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dep_var</span><span class="o">=</span><span class="n">dep</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">splits</span> <span class="o">=</span> <span class="n">RandomSplitter</span><span class="p">(</span><span class="n">valid_pct</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>I think <code class="language-plaintext highlighter-rouge">cont_cat_split</code> is a nice function to spend few seconds with. Going to <a href="https://github.com/fastai/fastai/blob/master/fastai/tabular/core.py#L84">its source code</a>, I can see how genuinely the continuous and categorical variables are managed:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cont_cat_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">max_card</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">dep_var</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+	<span class="s">"Helper function that returns column names of cont and cat variables from given `df`."</span>
+	<span class="n">cont_names</span><span class="p">,</span> <span class="n">cat_names</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">L</span><span class="p">(</span><span class="n">dep_var</span><span class="p">):</span> <span class="k">continue</span>
+		<span class="k">if</span> <span class="p">((</span><span class="n">pd</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">types</span><span class="p">.</span><span class="n">is_integer_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="p">].</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">and</span>
+			<span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="p">].</span><span class="n">unique</span><span class="p">().</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_card</span><span class="p">)</span> <span class="ow">or</span>
+			<span class="n">pd</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">types</span><span class="p">.</span><span class="n">is_float_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="p">].</span><span class="n">dtype</span><span class="p">)):</span>
+			<span class="n">cont_names</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span> <span class="n">cat_names</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">cont_names</span><span class="p">,</span> <span class="n">cat_names</span>
+</code></pre></div></div>
+<p>For every column in dataframe, if it has more then 20 elements or it’s a float, appends to continuous, otherwise categorical. I’ve no experience with FastAI API, but I suppose the library is full of such elegant and simple way to manage complex data and task.</p>
+
+<p>Once pre-processing step is completed, the dataframe is putted inside a <code class="language-plaintext highlighter-rouge">TabularPandas</code>.
+<code class="language-plaintext highlighter-rouge">TabularPandas</code> is an object. It’s a simple wrapper with transforms.
+Transforms are functions which organize the data in an optimal format.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.tabular.all</span> <span class="kn">import</span> <span class="n">TabularPandas</span> 
+<span class="n">to</span> <span class="o">=</span> <span class="n">TabularPandas</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> <span class="n">procs</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> 
+    <span class="n">y_names</span><span class="o">=</span><span class="n">dep</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">splits</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">to</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">xs</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221024142446.png]]</p>
+
+<blockquote>
+  <p>Machine learning models are only as good as the data that is used to train them.</p>
+</blockquote>
+
+<p>Better data format, better generalization.</p>
+
+<p>Now, save and train.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.tabular.all</span> <span class="kn">import</span> <span class="n">save_pickle</span>
+<span class="n">save_pickle</span><span class="p">(</span><span class="s">'to.pkl'</span><span class="p">,</span><span class="n">to</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="fitting">
+<a class="anchor" href="#fitting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fitting</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.tabular.all</span> <span class="kn">import</span> <span class="n">load_pickle</span>
+<span class="n">load_pickle</span><span class="p">(</span><span class="s">'to.pkl'</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Jeremy has developed a function which wraps <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code>. It turns useful later to play with attributes of function:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="k">def</span> <span class="nf">rf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+       <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
+        <span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">,</span>
+        <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_samples_leaf</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="bp">True</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+<p>A good error metrics to understand what’s going on is a simple <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">y</span><span class="p">),</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221024142733.png]]</p>
+
+<p>What’s <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>? Going to the <a href="https://github.com/scikit-learn/scikit-learn/blob/36958fb24/sklearn/metrics/_regression.py#L141">source code of scikit-learn</a>, I found line which calculate MAE:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">average</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+<p>It means:</p>
+<ol>
+  <li>calculate the delta between <code class="language-plaintext highlighter-rouge">(y_pred - y_true)</code>
+</li>
+  <li>take the absolute value <code class="language-plaintext highlighter-rouge">np.abs</code> of the whole rows <code class="language-plaintext highlighter-rouge">axis=0</code>
+</li>
+  <li>finally calculate the average with <code class="language-plaintext highlighter-rouge">np.average</code>
+</li>
+</ol>
+
+<p>Nothing to say, simple enough.</p>
+
+<h3 id="out-of-bag-error">
+<a class="anchor" href="#out-of-bag-error" aria-hidden="true"><span class="octicon octicon-link"></span></a>Out Of Bag Error</h3>
+
+<p>Next to <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>s I have to place <code class="language-plaintext highlighter-rouge">m.oob_score_</code> which returns the accuracy of predictions on the residual rows not used during training.
+Obviously higher score, I should expect a better generalization on validation set.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221025160903.png]]</p>
+
+<p>There’s so much resources where explain acutely and precisely what the hell OOB is. I’m not the right person to do that:</p>
+<blockquote>
+  <p>My intuition for this is that, since every tree was trained with a different randomly selected subset of rows, out-of-bag error is a little like imagining that every tree therefore also has its own validation set. That validation set is simply the rows that were not selected for that tree’s training.</p>
+</blockquote>
+
+<h3 id="intermediate-result">
+<a class="anchor" href="#intermediate-result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
+
+<p><code class="language-plaintext highlighter-rouge">47.06</code> and <code class="language-plaintext highlighter-rouge">73.49</code> are just numbers. But what does it mean?
+I have achieved, via a simple <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code> with <code class="language-plaintext highlighter-rouge">100</code> trees (n_estimators), an average of:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">47.06</code> KG of error on training set</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">73.49</code> KG of error on validation set</li>
+</ul>
+
+<p>And an accuracy of <code class="language-plaintext highlighter-rouge">0.709</code> on the residual data not included in the fitting step.</p>
+
+<p>For this reason, there are multiple objectives to try to achieve: a good trade off should be met by the following chain:
+<code class="language-plaintext highlighter-rouge">small_enough_error &gt; stability &gt; maintainability</code></p>
+
+<p>The next steps I’m going to walk will aim to improve the above chain.</p>
+
+<h2 id="second-round">
+<a class="anchor" href="#second-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Second Round</h2>
+
+<p><code class="language-plaintext highlighter-rouge">RandomForest</code> is composed by multiples <code class="language-plaintext highlighter-rouge">DecisionTrees</code>. 
+<code class="language-plaintext highlighter-rouge">DecisionTrees</code> are highly interpretable, so it’s time to investigate the data:</p>
+<ol>
+  <li>analyzing the most important columns, AKA <code class="language-plaintext highlighter-rouge">feature_importances_</code>
+</li>
+  <li>analyzing the prediction behavior for each row, AKA <code class="language-plaintext highlighter-rouge">treeinterpreter</code>
+</li>
+  <li>finding redundant columns, AKA <code class="language-plaintext highlighter-rouge">cluster_columns</code>
+</li>
+  <li>analyzing prediction confidence of the model, AKA <code class="language-plaintext highlighter-rouge">std</code> of each tree</li>
+  <li>analyzing the relationship between independent variables and dependent variable, AKA <code class="language-plaintext highlighter-rouge">partial_dependece</code>
+</li>
+  <li>finding out of domain data, AKA extrapolation problem</li>
+  <li>analyzing where most wrong prediction happens, AKA <code class="language-plaintext highlighter-rouge">confusion_matrix</code>
+</li>
+</ol>
+
+<h3 id="feature-importances">
+<a class="anchor" href="#feature-importances" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature Importances</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">rf_feat_importance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'cols'</span><span class="p">:</span><span class="n">df</span><span class="p">.</span><span class="n">columns</span><span class="p">,</span> <span class="s">'imp'</span><span class="p">:</span><span class="n">m</span><span class="p">.</span><span class="n">feature_importances_</span><span class="p">}</span>
+                       <span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'imp'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fi</span> <span class="o">=</span> <span class="n">rf_feat_importance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+<span class="n">fi</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221024145132.png]]</p>
+
+<p>According to the above table:</p>
+<ul>
+  <li>the box weight prediction is mainly influenced by <code class="language-plaintext highlighter-rouge">weight</code> itself<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">2</a></sup>. Sounds reasonable;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">id_machine</code>, in other words the machine which generates scraps, is the second most indicator of box weight prediction. Sounds reasonable as well;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">id_machine_article_description</code> is the combination between <code class="language-plaintext highlighter-rouge">id_machine</code>, <code class="language-plaintext highlighter-rouge">article</code> and <code class="language-plaintext highlighter-rouge">description_machine</code>, where <code class="language-plaintext highlighter-rouge">article</code> is the thickness range of scarps (Ex.: from 0.5mm to 0.25mm);</li>
+  <li>percentage of <code class="language-plaintext highlighter-rouge">id</code> and <code class="language-plaintext highlighter-rouge">timestamp</code> is too similar. Maybe, periodically, I can expect a specific type of scraps?</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">code_machine</code> is the short name of machine;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">last_name</code>, the operator, contributes to the box weight prediction as well. Maybe some operators are more diligent then others?</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">description_machine</code> is extended name of machine;</li>
+</ul>
+
+<p>Everything sounds reasonable so it seems I’ve discovered nothing so useful.</p>
+
+<p>Let’s visualize <code class="language-plaintext highlighter-rouge">feature_importances_</code> columns.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_fi</span><span class="p">(</span><span class="n">fi</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">fi</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="s">'cols'</span><span class="p">,</span> <span class="s">'imp'</span><span class="p">,</span> <span class="s">'barh'</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">plot_fi</span><span class="p">(</span><span class="n">fi</span><span class="p">[:</span><span class="mi">30</span><span class="p">]);</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221024161156.png]]</p>
+
+<p>Now let’s remove from training and validation sets features which tend to <code class="language-plaintext highlighter-rouge">0</code> .</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fi</span> <span class="o">=</span> <span class="n">fi</span><span class="p">[</span><span class="n">fi</span><span class="p">[</span><span class="s">"imp"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.002</span><span class="p">]</span>
+
+<span class="n">filtered_xs</span> <span class="o">=</span> <span class="n">xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">fi</span><span class="p">[</span><span class="s">"cols"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">filtered_valid_xs</span> <span class="o">=</span> <span class="n">valid_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">fi</span><span class="p">[</span><span class="s">"cols"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Then fitting again the model and check the error rate (<code class="language-plaintext highlighter-rouge">mean_absolute_error</code> and <code class="language-plaintext highlighter-rouge">oob_score_</code>).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">),</span> <span class="n">y</span><span class="p">),</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221024161755.png]]</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221025161630.png]]</p>
+
+<p>Has been achieved few improvements:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">mean_absolute_error</code> on training set is smaller: from <code class="language-plaintext highlighter-rouge">47.06</code> to <code class="language-plaintext highlighter-rouge">46.78</code>;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">mean_absolute_error</code> on validation set is smaller: from <code class="language-plaintext highlighter-rouge">73.49</code> to <code class="language-plaintext highlighter-rouge">73.47</code>;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">oob_score_</code> stable: from <code class="language-plaintext highlighter-rouge">0.709</code> to <code class="language-plaintext highlighter-rouge">0.708</code>
+</li>
+  <li>features reduced: from 33 to 25.</li>
+</ul>
+
+<p>Now, let’s hunt redundant features.</p>
+
+<h3 id="data-points-based-on-their-similarities">
+<a class="anchor" href="#data-points-based-on-their-similarities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data points based on their Similarities</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># https://stackoverflow.com/questions/17778394/list-highest-correlation-pairs-from-a-large-correlation-matrix-in-pandas
+</span><span class="k">def</span> <span class="nf">corr_filter</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">bound</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">corr</span><span class="p">()</span>
+    <span class="n">x_filtered</span> <span class="o">=</span> <span class="n">corr</span><span class="p">[((</span><span class="n">corr</span> <span class="o">&gt;=</span> <span class="n">bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">corr</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">bound</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">corr</span> <span class="o">!=</span><span class="mf">1.000</span><span class="p">)]</span>
+    <span class="n">x_flattened</span> <span class="o">=</span> <span class="n">x_flattened</span><span class="p">.</span><span class="n">unstack</span><span class="p">().</span><span class="n">sort_values</span><span class="p">().</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">x_flattened</span>
+
+<span class="n">corr_filter</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">,</span> <span class="p">.</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221025101554.png]]
+Giving a threshold of <code class="language-plaintext highlighter-rouge">0.8</code>, function will return set of elements highly correlated with a score from <code class="language-plaintext highlighter-rouge">0.8</code> to <code class="language-plaintext highlighter-rouge">0.9999</code>.</p>
+
+<p>For a better understanding, worth to visualize them.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># https://stackoverflow.com/questions/17778394/list-highest-correlation-pairs-from-a-large-correlation-matrix-in-pandas
+</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sn</span>
+
+<span class="n">xs_corr</span> <span class="o">=</span> <span class="n">filtered_xs</span><span class="p">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">compressed_xs</span> <span class="o">=</span> <span class="n">xs_corr</span><span class="p">[((</span><span class="n">xs_corr</span> <span class="o">&gt;=</span> <span class="p">.</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">xs_corr</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="p">.</span><span class="mi">5</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xs_corr</span> <span class="o">!=</span><span class="mf">1.000</span><span class="p">)]</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">sn</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">compressed_xs</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">"Reds"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221024163716.png]]</p>
+
+<p>An alternative to <code class="language-plaintext highlighter-rouge">heatmap</code> is the helper function <code class="language-plaintext highlighter-rouge">cluster_columns</code> which implement a <code class="language-plaintext highlighter-rouge">dendrogram</code> chart.
+[link to dendogram chart. understand and create a separated post for each important function]</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># https://github.com/fastai/fastbook/blob/master/09_tabular.ipynb
+</span><span class="kn">from</span> <span class="nn">scipy.cluster</span> <span class="kn">import</span> <span class="n">hierarchy</span> <span class="k">as</span> <span class="n">hc</span>
+
+<span class="k">def</span> <span class="nf">cluster_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="n">scipy</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">correlation</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">corr_condensed</span> <span class="o">=</span> <span class="n">hc</span><span class="p">.</span><span class="n">distance</span><span class="p">.</span><span class="n">squareform</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">corr</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">hc</span><span class="p">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">'average'</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="n">hc</span><span class="p">.</span><span class="n">dendrogram</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">leaf_font_size</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Now, iteratively remove every closely correlated feature and calculate <code class="language-plaintext highlighter-rouge">oob_score_</code>. This task is performed by <code class="language-plaintext highlighter-rouge">get_oob</code> function:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_oob</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+        <span class="n">max_samples</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get_oob</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">)</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221025162507.png]]</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"slim_alloy"</span><span class="p">,</span> <span class="s">"id_alloy"</span><span class="p">,</span> <span class="s">"pairing_alloy"</span><span class="p">,</span>
+           <span class="s">"international_alloy"</span><span class="p">,</span> <span class="s">"id_user"</span><span class="p">,</span> <span class="s">"address"</span><span class="p">,</span>
+           <span class="s">"location_name"</span><span class="p">,</span> <span class="s">"article_min_tickness"</span><span class="p">,</span> <span class="s">"article_max_tickness_na"</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="n">c</span><span class="p">:</span><span class="n">get_oob</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">to_drop</span><span class="p">}</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221025162546.png]]</p>
+
+<p>Going to remove only features with higher score.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"id_alloy"</span><span class="p">,</span> <span class="s">"id_user"</span><span class="p">,</span> <span class="s">"address"</span><span class="p">,</span> <span class="s">"article_min_tickness"</span><span class="p">]</span>
+<span class="n">filtered_xs</span> <span class="o">=</span> <span class="n">filtered_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">filtered_valid_xs</span> <span class="o">=</span> <span class="n">filtered_valid_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">),</span> <span class="n">y</span><span class="p">),</span> 
+<span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221025104016.png]]</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221025164058.png]]</p>
+
+<h3 id="intermediate-result-1">
+<a class="anchor" href="#intermediate-result-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
+
+<p>Not much worse than the model with all the fields. I’ve reduced some more columns (from <code class="language-plaintext highlighter-rouge">25</code> to <code class="language-plaintext highlighter-rouge">20</code>) and kept stable <code class="language-plaintext highlighter-rouge">oob_score_</code>.
+Removing redundant features help to prevent <strong>overfitting</strong>.</p>
+
+<h2 id="third-round">
+<a class="anchor" href="#third-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third Round</h2>
+
+<p>As showed by Jeremy, Random Forest can sin of Extrapolation problem (brain explosion emoticon).
+![[Pasted image 20221025172423.png]]</p>
+
+<p>It means, in this case, predictions are too low with new data.</p>
+
+<blockquote>
+  <p>Remember, a random forest just averages the predictions of a number of trees. And a tree simply predicts the average value of the rows in a leaf. Therefore, a tree and a random forest can never predict values outside of the range of the training data. This is particularly problematic for data where there is a trend over time, such as inflation, and you wish to make predictions for a future time. Your predictions will be systematically too low.</p>
+</blockquote>
+
+<p>For this reason I’ve to make sure validation set does not contain <strong>out-of-domain data</strong>.</p>
+
+<h3 id="out-of-domain-data">
+<a class="anchor" href="#out-of-domain-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Out-of-Domain Data</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_dom</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">xs_final</span><span class="p">,</span> <span class="n">valid_xs_final</span><span class="p">])</span>
+<span class="n">is_valid</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">xs_final</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_xs_final</span><span class="p">))</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">df_dom</span><span class="p">,</span> <span class="n">is_valid</span><span class="p">)</span>
+<span class="n">rf_feat_importance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">df_dom</span><span class="p">)[:</span><span class="mi">6</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><strong>link to data leakage jeremy and scientific docs
+look at questions and reflections of Random-Forest-Aluminium-Tare-Weight-Copy1.ipynb
+use funny image and diagrams
+look if preprocessing is the right step which do all this stuff
+~do not put code but put image of output~
+data normalization can affect random forest regressor
+Retweet, save a life</strong></p>
+
+<h2 id="ko">
+<a class="anchor" href="#ko" aria-hidden="true"><span class="octicon octicon-link"></span></a>KO</h2>
+
+<h2 id="open-points">
+<a class="anchor" href="#open-points" aria-hidden="true"><span class="octicon octicon-link"></span></a>Open Points</h2>
+<ul>
+  <li>What would happen if I play with categorical and continuous variables? Can them affect the prediction?</li>
+  <li>Plotting <code class="language-plaintext highlighter-rouge">dendogram</code> and removing most correlated columns. Does it change the prediction? Are columns the same?</li>
+  <li>Why is confidence of prediction totally wrong when the deviation reach <code class="language-plaintext highlighter-rouge">100</code>? Why is prediction not so bad with greater value?</li>
+  <li>Partial dependency plots for multi-class-classifiers?</li>
+</ul>
+
+<h2 id="whats-next">
+<a class="anchor" href="#whats-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s Next?</h2>
+<ul>
+  <li>NN with simplified dataset.</li>
+  <li>Would be nice to add additional information. Start with weather data.</li>
+  <li>Developing an alert system where departments are notified every time the prediction of model is too different from what’s happening during the weighting process.</li>
+  <li>Combining CV model with the best model on tabular data.</li>
+</ul>
+
+<p>If you have any suggestions, recommendations, or corrections please reach out to me.</p>
+
+<hr>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>We have developed few tools to speed up and manage the weighting and labelling process of the Aluminium scarp <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
+
+      <p><a href="#fnref:4" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div><a class="u-url" href="/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/bottoni/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/bottoni/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/bottoni/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Open notes</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/b8ni" target="_blank" title="b8ni"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/bot_fra" target="_blank" title="bot_fra"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
