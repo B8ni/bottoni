@@ -153,10 +153,24 @@ There's so much resources where explain acutely and precisely what the hell OOB 
 
 ### Intermediate Result
 
+<table>
+<tr><th>MAE </th><th>OOB</th></tr>
+<tr><td>
+
 |**Round**|**Set**   |**MAE**   |
 |---|---|---|
-|**1**|**Training**   |**``47.06``**
+|**1**|**Training**   |**``47.06``**|
 |**1**|**Validation**   |**``73.49``**
+
+
+</td><td>
+
+|**Round**|**Score**|
+|---|---|
+|**1**|** ``0.709`` **   |
+
+</td></tr> </table>
+
 
 ``47.06`` and ``73.49`` are just numbers. But what does it mean?
 I have achieved, via a simple ``RandomForestClassifier`` with ``100`` trees (n_estimators), an average of:
