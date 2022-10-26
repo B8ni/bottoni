@@ -1,3 +1,5 @@
+![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
+
 ---
 toc: true
 layout: post
@@ -6,7 +8,6 @@ categories: [fastai]
 title: How Random Forest Can Empower A Small Business 
 ---
 
-![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
 ## Preamble
 While the entire world is totally captured by Stable Diffusion, I'm experimenting **randomly into the forest of Random Forest**. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually [Forrest](https://en.wikipedia.org/wiki/Forrest_Gump) is winning the game.
 
@@ -389,7 +390,7 @@ What I have achieved so far are only small improvements. Looking at a simple cha
 
 Some datapoints are consistently predicted wrong (dots at about ``-900/-1000`` and about ``900/1000``). Other visual tools like [Confusion matrix](https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix) , **prediction confidence**, [treeinterpreter](http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/) can help to analyze this behavior.  
 
-### Fourth Round
+## Final Round
 Before to any hyper-mega-super tuning, I can try my last attempt removing older data.  Why?
 The application which manage the weighting/labeling process of scraps has been release about 2 years ago. Wouldn't surprise me if I found some strange datapoints, especially during first period of usage where operators were not comfortable yet with the system.
 
@@ -398,7 +399,7 @@ Re-processing whole steps removing older 12k datapoints, seems to have better ba
 
 There's still miss-classification at around ``-900/-1000`` and ``900/1000``, but it's evident has been reached an improvement.
 
-### Final Result
+### Result
 - from  ``73.98`` KG to ``72.17`` KG, validation set;
 - from ``0.7072`` to ``0.7141``, ``oob_score_``.
 
