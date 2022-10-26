@@ -105,7 +105,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2">
 <a href="#preamble">Preamble</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#why-predicting-boxes-weight">Why predicting Boxes weight?</a></li>
+<li class="toc-entry toc-h3"><a href="#why-predicting-scraps-boxes-weight">Why predicting Scraps Boxes weight?</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2">
@@ -146,38 +146,52 @@ window.onload = wrap_img;
 <a class="anchor" href="#preamble" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preamble</h2>
 <p>While the entire world is totally captured by Stable Diffusion, I’m experimenting <strong>randomly into the forest of Random Forest</strong>. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually <a href="https://en.wikipedia.org/wiki/Forrest_Gump">Forrest</a> is winning the game.</p>
 
-<h3 id="why-predicting-boxes-weight">
-<a class="anchor" href="#why-predicting-boxes-weight" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why predicting Boxes weight?</h3>
-<p>It’s hard to fight entropy in my house. 
-It’s exponentially hard to fight entropy in a plant, in an Aluminium plant precisely.</p>
+<h3 id="why-predicting-scraps-boxes-weight">
+<a class="anchor" href="#why-predicting-scraps-boxes-weight" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why predicting Scraps Boxes weight?</h3>
+<p>It’s hard to fight entropy in my home.</p>
 
-<p>The factory would gain lots of benefits when scraps are segregated, weighted and labeled properly<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.
-Better the process and higher the impact on the revenue of the company (true story).</p>
+<p>It’s exponentially hard to fight entropy in a plant, in an Aluminium plant precisely.</p>
+
+<p>The factory would gain lots of benefits when scraps are segregated, weighted and labeled in the right way<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.
+<strong>Better the process and higher the impact on the revenue of the company</strong> (true story).</p>
 
 <p>The weighting process is simple: take the box, put it on an industrial scale, get the weight and repeat.</p>
 
 <p>The weighting process, although heavily based on an inductive flow, it’s not enough. The operators have still room of errors.
-How can I solve this problem, without spending lot’s of money? How can I monitoring the situation and eventually notify others departments? 
-Wrong answers only: Aluminium scarps data and Random Forest.</p>
+How can I solve this problem, without spending lot’s of money? Wrong answers only: Random Forest is the answer.</p>
 
-<p>I concluded that Boxes due of limited types of them, can be solved or partially solved with a classification model.</p>
+<p>I concluded that scraps box belongs to a specific set of weights: from 0 (no box) up to 1010 KG. Simply a set of <code class="language-plaintext highlighter-rouge">10</code> boxes. It brings to a problem to solve: <strong>classification model</strong>.</p>
 
-<p>Now let’s see which one better performs.</p>
+<p>Structured data + classification problem = <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code>.</p>
 
-<p><strong>put a funny image here</strong></p>
+<p><img src="/bottoni/images/scrap_box.jpg" alt="" title="Example of Aluminium Scrap Box"></p>
 
 <h2 id="first-round">
 <a class="anchor" href="#first-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>First Round</h2>
-<p><strong>Model:</strong> Random Forest Classifier.
-<strong>Dataset:</strong> Extended. CSV file, 82k rows and 33 columns.
-<strong>Verbose:</strong> I’ve joined most interesting tables, adding intentionally duplicated or closely correlated columns. May increase the noise but may drive to a better prediction as well.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Model</strong></th>
+      <th><strong>Dataset</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Random Forest Classifier</td>
+      <td>CSV file, 82k rows and 33 columns.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The dataset has been created by joying most interesting tables, adding intentionally duplicated or closely correlated columns. May increase the noise or may drive to a better prediction?</p>
 
 <h3 id="preprocessing">
 <a class="anchor" href="#preprocessing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preprocessing</h3>
-<p>Since I already worked with this data, I found a subtle feature, which is a calculated field where would create lots of trouble in production environment.
-<code class="language-plaintext highlighter-rouge">net_weight</code> is accused of Data Leakage so I firstly dropped it.</p>
+<p>Since I already worked with this data, I found a subtle feature, which is a calculated field where would create lots of troubles in production environment.
+<code class="language-plaintext highlighter-rouge">net_weight</code> is accused of Data Leakage<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup><sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup> so I firstly dropped it.</p>
 
-<p>Obviously, Data Leakage is an issue faced quite the end of experimentation but, IMHO, earlier you find and better it is. It’s mean you understand enough the dataset.</p>
+<p>Obviously, Data Leakage is an issue faced later on experimentation but, IMHO, earlier you find and better it is. It’s mean you have a good understanding of data.</p>
 
 <p>Via <code class="language-plaintext highlighter-rouge">Categorify</code>, <code class="language-plaintext highlighter-rouge">FillMissing</code>, <code class="language-plaintext highlighter-rouge">cont_cat_split</code> and <code class="language-plaintext highlighter-rouge">RandomSplitter</code> functions, the data is ready to be fitted.</p>
 
@@ -208,9 +222,15 @@ Wrong answers only: Aluminium scarps data and Random Forest.</p>
 </code></pre></div></div>
 <p>For every column in dataframe, if it has more then 20 elements or it’s a float, appends to continuous, otherwise categorical. I’ve no experience with FastAI API, but I suppose the library is full of such elegant and simple way to manage complex data and task.</p>
 
-<p>Once pre-processing step is completed, the dataframe is putted inside a <code class="language-plaintext highlighter-rouge">TabularPandas</code>.
-<code class="language-plaintext highlighter-rouge">TabularPandas</code> is an object. It’s a simple wrapper with transforms.
+<p>Once pre-processing step is completed, the dataframe is wrapped into a <code class="language-plaintext highlighter-rouge">TabularPandas</code>.
+<code class="language-plaintext highlighter-rouge">TabularPandas</code> is an object. It’s a simple <code class="language-plaintext highlighter-rouge">DataFrame</code> wrapper with transforms.
 Transforms are functions which organize the data in an optimal format.</p>
+
+<blockquote>
+  <p>Machine learning models are only as good as the data that is used to train them.</p>
+</blockquote>
+
+<p>Better data format, better generalization.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.tabular.all</span> <span class="kn">import</span> <span class="n">TabularPandas</span> 
 <span class="n">to</span> <span class="o">=</span> <span class="n">TabularPandas</span><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span> <span class="n">procs</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> 
@@ -220,12 +240,6 @@ Transforms are functions which organize the data in an optimal format.</p>
 </code></pre></div></div>
 <p><img src="/bottoni/images/Pasted%20image%2020221024142446.png" alt=""></p>
 
-<blockquote>
-  <p>Machine learning models are only as good as the data that is used to train them.</p>
-</blockquote>
-
-<p>Better data format, better generalization.</p>
-
 <p>Now, save and train.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.tabular.all</span> <span class="kn">import</span> <span class="n">save_pickle</span>
 <span class="n">save_pickle</span><span class="p">(</span><span class="s">'to.pkl'</span><span class="p">,</span><span class="n">to</span><span class="p">)</span>
@@ -234,10 +248,11 @@ Transforms are functions which organize the data in an optimal format.</p>
 <h3 id="fitting">
 <a class="anchor" href="#fitting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fitting</h3>
 
+<p>Jeremy has developed a function which wraps <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code>. It turns useful later to apply some tuning.</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.tabular.all</span> <span class="kn">import</span> <span class="n">load_pickle</span>
 <span class="n">load_pickle</span><span class="p">(</span><span class="s">'to.pkl'</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
 </code></pre></div></div>
-<p>Jeremy has developed a function which wraps <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code>. It turns useful later to play with attributes of function:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 <span class="k">def</span> <span class="nf">rf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -248,11 +263,11 @@ Transforms are functions which organize the data in an optimal format.</p>
 </code></pre></div></div>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div></div>
-<p>A good error metrics to understand what’s going on is a simple <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>:</p>
+<p>A good error metrics, to understand what’s going on, is a simple <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
 <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">y</span><span class="p">),</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
 </code></pre></div></div>
-<p><img src="/bottoni/images/Pasted%20image%2020221024142733.png" alt="">![[]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221024142733.png" alt=""></p>
 
 <p>What’s <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>? Going to the <a href="https://github.com/scikit-learn/scikit-learn/blob/36958fb24/sklearn/metrics/_regression.py#L141">source code of scikit-learn</a>, I found line which calculate MAE:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">average</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -263,29 +278,50 @@ Transforms are functions which organize the data in an optimal format.</p>
 </li>
   <li>take the absolute value <code class="language-plaintext highlighter-rouge">np.abs</code> of the whole rows <code class="language-plaintext highlighter-rouge">axis=0</code>
 </li>
-  <li>finally calculate the average with <code class="language-plaintext highlighter-rouge">np.average</code>
-</li>
+  <li>finally calculate the average with <code class="language-plaintext highlighter-rouge">np.average</code> function</li>
 </ol>
 
-<p>Nothing to say, simple enough.</p>
+<p>Nothing to add, simple enough.</p>
 
 <h3 id="out-of-bag-error">
 <a class="anchor" href="#out-of-bag-error" aria-hidden="true"><span class="octicon octicon-link"></span></a>Out Of Bag Error</h3>
 
-<p>Next to <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>s I have to place <code class="language-plaintext highlighter-rouge">m.oob_score_</code> which returns the accuracy of predictions on the residual rows not used during training.
-Obviously higher score, I should expect a better generalization on validation set.</p>
+<p>In addition to <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>s, I have to keep an eye on <code class="language-plaintext highlighter-rouge">oob_score_</code> attribute which returns the <strong>accuracy of predictions</strong> on the <strong>residual rows scrapped during the training</strong>.
+Obviously higher the score better the generalization on validation set.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
 </code></pre></div></div>
 <p><img src="/bottoni/images/Pasted%20image%2020221025160903.png" alt=""></p>
 
-<p>There’s so much resources where explain acutely and precisely what the hell OOB is. I’m not the right person to do that:</p>
+<p>There’s so much resources where explain acutely and precisely what the hell OOB is. I’m not the right person to do that. To simplify the definition I’ve impressed in my mind the following tip by Jeremy:</p>
 <blockquote>
   <p>My intuition for this is that, since every tree was trained with a different randomly selected subset of rows, out-of-bag error is a little like imagining that every tree therefore also has its own validation set. That validation set is simply the rows that were not selected for that tree’s training.</p>
 </blockquote>
 
 <h3 id="intermediate-result">
 <a class="anchor" href="#intermediate-result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Round</strong></th>
+      <th><strong>Set</strong></th>
+      <th><strong>MAE</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Training</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">47.06</code></strong></td>
+    </tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Validation</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">73.49</code></strong></td>
+    </tr>
+  </tbody>
+</table>
 
 <p><code class="language-plaintext highlighter-rouge">47.06</code> and <code class="language-plaintext highlighter-rouge">73.49</code> are just numbers. But what does it mean?
 I have achieved, via a simple <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code> with <code class="language-plaintext highlighter-rouge">100</code> trees (n_estimators), an average of:</p>
@@ -298,10 +334,10 @@ I have achieved, via a simple <code class="language-plaintext highlighter-rouge"
 
 <p>And an accuracy of <code class="language-plaintext highlighter-rouge">0.709</code> on the residual data not included in the fitting step.</p>
 
-<p>For this reason, there are multiple objectives to try to achieve: a good trade off should be met by the following chain:
+<p>For this reason, there are multiple goals to try to achieve. A good trade off could be the following chain:
 <code class="language-plaintext highlighter-rouge">small_enough_error &gt; stability &gt; maintainability</code></p>
 
-<p>The next steps I’m going to walk will aim to improve the above chain.</p>
+<p>The next steps I’m going to walk, aims to improve the above chain.</p>
 
 <h2 id="second-round">
 <a class="anchor" href="#second-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Second Round</h2>
@@ -337,7 +373,7 @@ I have achieved, via a simple <code class="language-plaintext highlighter-rouge"
 
 <p>According to the above table:</p>
 <ul>
-  <li>the box weight prediction is mainly influenced by <code class="language-plaintext highlighter-rouge">weight</code> itself<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">2</a></sup>. Sounds reasonable;</li>
+  <li>the box weight prediction is mainly influenced by <code class="language-plaintext highlighter-rouge">weight</code> itself<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">4</a></sup>. Sounds reasonable;</li>
   <li>
 <code class="language-plaintext highlighter-rouge">id_machine</code>, in other words the machine which generates scraps, is the second most indicator of box weight prediction. Sounds reasonable as well;</li>
   <li>
@@ -599,6 +635,7 @@ All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
   <li>Why is confidence of prediction totally wrong when the deviation reach value <code class="language-plaintext highlighter-rouge">100</code>? Why is prediction not so bad with greater value?</li>
   <li>Partial dependency plots for multi-class-classifiers?</li>
   <li>Could improve Random Forest model with additional information like weather data?</li>
+  <li>What’s happen if I convert the problem into a regression one? May the result improve?</li>
 </ul>
 
 <p><strong>If you have any suggestions, recommendations, or corrections please reach out to me.</strong></p>
@@ -608,7 +645,13 @@ All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>We have developed few tools to speed up and manage the weighting and labelling process of the Aluminium scarps <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+      <p>We have developed some tools to speed up and managing the process of the Aluminium scarps weighting <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>A gentle introduction to Data Leakage can be found on <a href="https://www.kaggle.com/code/alexisbcook/data-leakage">Kaggle course</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>A formal introduction to Data Leakage can be found on <a href="https://www.cs.umb.edu/~ding/history/470_670_fall_2011/papers/cs670_Tran_PreferredPaper_LeakingInDataMining.pdf">Leakage in Data Mining paper</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:4" role="doc-endnote">
 
