@@ -31,7 +31,7 @@ Structured data + classification problem = ``RandomForestClassifier``.
 
 ## First Round
 
-|**Model**   |**Dataset**   |
+|Model   |Dataset   |
 |---|---|
 |Random Forest Classifier   |CSV file, 82k rows and 33 columns.
 
@@ -153,9 +153,9 @@ There's so much resources where explain acutely and precisely what the hell OOB 
 
 ### Intermediate Result
 
-|**Round**|**OOB Score**|**MAE Training set** |**MAE Validation set**|
+|Round|OB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
-|**``1``**  |**``0.709``**  | **``47.06``**|**``73.49``**|
+|**1**  |**``0.709``**  | **``47.06``**|**``73.49``**|
 
 ``47.06`` and ``73.49`` are just numbers. But what does it mean?
 I have achieved, via a simple ``RandomForestClassifier`` with ``100`` trees (n_estimators), an average of:
@@ -330,7 +330,7 @@ m.oob_score_
 ### Intermediate Result
 
 
-|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+|Round|OB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
 |1|``0.709``  | ``47.06``|`73.49`|
 |**2**|**``0.708``**   |**`49.37`**|**``74.09``**|
@@ -394,7 +394,7 @@ m.oob_score_
 
 ### Intermediate Result
 
-|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+|Round|OB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
 |1|``0.709``  | ``47.06``|`73.49`|
 |2|``0.708``   |`49.37`|``74.09``|
@@ -421,7 +421,7 @@ There's still miss-classification at around ``-900/-1000`` and ``900/1000``, it'
 
 ### Result
 
-|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+|Round|OB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
 |1|``0.709``  | ``47.06``|`73.49`|
 |2|``0.708``   |`49.37`|``74.09``|
