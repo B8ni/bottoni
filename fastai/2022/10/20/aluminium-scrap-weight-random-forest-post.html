@@ -142,7 +142,6 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#open-points">Open Points</a></li>
 </ul>
 <p><img src="/bottoni/images/forrest-gamp.png" alt="" title="Forrest Gump in a Random Forest"></p>
-
 <h2 id="preamble">
 <a class="anchor" href="#preamble" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preamble</h2>
 <p>While the entire world is totally captured by Stable Diffusion, I’m experimenting <strong>randomly into the forest of Random Forest</strong>. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually <a href="https://en.wikipedia.org/wiki/Forrest_Gump">Forrest</a> is winning the game.</p>
@@ -278,7 +277,7 @@ Obviously higher score, I should expect a better generalization on validation se
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221025160903.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221025160903.png" alt=""></p>
 
 <p>There’s so much resources where explain acutely and precisely what the hell OOB is. I’m not the right person to do that:</p>
 <blockquote>
@@ -334,7 +333,7 @@ I have achieved, via a simple <code class="language-plaintext highlighter-rouge"
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fi</span> <span class="o">=</span> <span class="n">rf_feat_importance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
 <span class="n">fi</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221024145132.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221024145132.png" alt=""></p>
 
 <p>According to the above table:</p>
 <ul>
@@ -360,7 +359,7 @@ I have achieved, via a simple <code class="language-plaintext highlighter-rouge"
 
 <span class="n">plot_fi</span><span class="p">(</span><span class="n">fi</span><span class="p">[:</span><span class="mi">30</span><span class="p">]);</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221024161156.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221024161156.png" alt=""></p>
 
 <p>Now let’s remove from training and validation sets features which tend to <code class="language-plaintext highlighter-rouge">0</code> .</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fi</span> <span class="o">=</span> <span class="n">fi</span><span class="p">[</span><span class="n">fi</span><span class="p">[</span><span class="s">"imp"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.002</span><span class="p">]</span>
@@ -373,11 +372,11 @@ I have achieved, via a simple <code class="language-plaintext highlighter-rouge"
 </code></pre></div></div>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">),</span> <span class="n">y</span><span class="p">),</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221024161755.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221024161755.png" alt=""></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221025161630.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221025161630.png" alt=""></p>
 
 <p>Has been achieved few improvements:</p>
 <ul>
@@ -404,7 +403,7 @@ I have achieved, via a simple <code class="language-plaintext highlighter-rouge"
 
 <span class="n">corr_filter</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">,</span> <span class="p">.</span><span class="mi">8</span><span class="p">)</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221025101554.png]]
+<p><img src="/bottoni/images/Pasted%20image%2020221025101554.png" alt="">
 Giving a threshold of <code class="language-plaintext highlighter-rouge">0.8</code>, function will return set of elements highly correlated with a score from <code class="language-plaintext highlighter-rouge">0.8</code> to <code class="language-plaintext highlighter-rouge">0.9999</code>.</p>
 
 <p>For a better understanding, worth to visualize them.</p>
@@ -418,7 +417,7 @@ Giving a threshold of <code class="language-plaintext highlighter-rouge">0.8</co
 <span class="n">sn</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">compressed_xs</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">"Reds"</span><span class="p">)</span>
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221024163716.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221024163716.png" alt=""></p>
 
 <p>An alternative to <code class="language-plaintext highlighter-rouge">heatmap</code> is the helper function <code class="language-plaintext highlighter-rouge">cluster_columns</code> which implement a <code class="language-plaintext highlighter-rouge">dendrogram</code> chart.
 [link to dendogram chart. understand and create a separated post for each important function]</p>
@@ -443,14 +442,14 @@ Giving a threshold of <code class="language-plaintext highlighter-rouge">0.8</co
 </code></pre></div></div>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get_oob</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">)</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221025162507.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221025162507.png" alt=""></p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"slim_alloy"</span><span class="p">,</span> <span class="s">"id_alloy"</span><span class="p">,</span> <span class="s">"pairing_alloy"</span><span class="p">,</span>
            <span class="s">"international_alloy"</span><span class="p">,</span> <span class="s">"id_user"</span><span class="p">,</span> <span class="s">"address"</span><span class="p">,</span>
            <span class="s">"location_name"</span><span class="p">,</span> <span class="s">"article_min_tickness"</span><span class="p">,</span> <span class="s">"article_max_tickness_na"</span><span class="p">]</span>
 </code></pre></div></div>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="n">c</span><span class="p">:</span><span class="n">get_oob</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">to_drop</span><span class="p">}</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221025162546.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221025162546.png" alt=""></p>
 
 <p>Going to remove only features with higher score.</p>
 
@@ -463,10 +462,10 @@ Giving a threshold of <code class="language-plaintext highlighter-rouge">0.8</co
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">),</span> <span class="n">y</span><span class="p">),</span> 
 <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221025104016.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221025104016.png" alt=""></p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221025164058.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221025164058.png" alt=""></p>
 
 <h3 id="intermediate-result-1">
 <a class="anchor" href="#intermediate-result-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
@@ -478,7 +477,7 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 <a class="anchor" href="#third-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third Round</h2>
 
 <p>As showed by Jeremy, Random Forest can sin of Extrapolation problem (<img class="emoji" title=":open_mouth:" alt=":open_mouth:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f62e.png" height="20" width="20">).
-![[Pasted image 20221025172423.png]]</p>
+<img src="/bottoni/images/Pasted%20image%2020221025172423.png" alt=""></p>
 
 <p>It means, in this case, predictions are too low with new data.</p>
 
@@ -498,7 +497,7 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 <span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">df_dom</span><span class="p">,</span> <span class="n">is_valid</span><span class="p">)</span>
 <span class="n">rf_feat_importance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">df_dom</span><span class="p">)[:</span><span class="mi">15</span><span class="p">]</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221026103311.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221026103311.png" alt=""></p>
 
 <p>Now, for each feature which vary a lot from training set and validation set, try to drop and check <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>. Finally, select those that keep improving the model.</p>
 
@@ -509,7 +508,7 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
     <span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> <span class="n">valid_y</span><span class="p">))</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221026104401.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221026104401.png" alt=""></p>
 
 <p>Let’s drop only <code class="language-plaintext highlighter-rouge">slim_alloy</code>.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s">'slim_alloy'</span><span class="p">]</span>
@@ -520,12 +519,12 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 <span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">xs_final</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221026104546.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221026104546.png" alt=""></p>
 
 <p>Keep checking out of bag error:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
 </code></pre></div></div>
-<p>![[Pasted image 20221026104841.png]]</p>
+<p><img src="/bottoni/images/Pasted%20image%2020221026104841.png" alt=""></p>
 
 <h3 id="intermediate-result-2">
 <a class="anchor" href="#intermediate-result-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
@@ -537,7 +536,7 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 </ul>
 
 <p>What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there’s still lot of room to improve.
-![[Pasted image 20221026110706.png]]</p>
+<img src="/bottoni/images/Pasted%20image%2020221026110706.png" alt=""></p>
 
 <p>Some datapoints are consistently predicted wrong (dots at about <code class="language-plaintext highlighter-rouge">-900/-1000</code> and about <code class="language-plaintext highlighter-rouge">900/1000</code>). Other visual tools like <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix">Confusion matrix</a> , <strong>prediction confidence</strong>, <a href="http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/">treeinterpreter</a> can help to analyze this behavior.</p>
 
@@ -547,7 +546,7 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 The application which manage the weighting/labeling process of scraps has been release about 2 years ago. Wouldn’t surprise me if I found some strange datapoints, especially during first period of usage where operators were not comfortable yet with the system.</p>
 
 <p>Re-processing whole steps removing older 12k datapoints, seems to have better baseline model.
-![[Pasted image 20221026121947.png]]</p>
+<img src="/bottoni/images/Pasted%20image%2020221026121947.png" alt=""></p>
 
 <p>There’s still miss-classification at around <code class="language-plaintext highlighter-rouge">-900/-1000</code> and <code class="language-plaintext highlighter-rouge">900/1000</code>, but it’s evident has been reached an improvement.</p>
 
@@ -577,7 +576,7 @@ All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
   <p>…roughly 80% of consequences come from 20% of causes…</p>
 </blockquote>
 
-<p>It mean to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.</p>
+<p>It means to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.</p>
 
 <p>So next steps:</p>
 <ul>
@@ -602,7 +601,7 @@ All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
   <li>Could improve Random Forest model with additional information like weather data?</li>
 </ul>
 
-<p>If you have any suggestions, recommendations, or corrections please reach out to me.</p>
+<p><strong>If you have any suggestions, recommendations, or corrections please reach out to me.</strong></p>
 
 <hr>
 
