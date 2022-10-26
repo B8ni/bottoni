@@ -55,36 +55,42 @@ window.onload = wrap_img;
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/bottoni/">frabot</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/bottoni/">frabot</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/bottoni/about/">About Me</a><a class="page-link" href="/bottoni/search/">Search</a><a class="page-link" href="/bottoni/categories/">Tags</a></div>
-      </nav></div>
+        <div class="trigger">
+<a class="page-link" href="/bottoni/about/">About Me</a><a class="page-link" href="/bottoni/search/">Search</a><a class="page-link" href="/bottoni/categories/">Tags</a>
+</div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">How Random Forest Can Empower A Small Business</h1><p class="page-description">Not so insightful discovery with Random Forest.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-20T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">How Random Forest Can Empower A Small Business</h1>
+<p class="page-description">Not so insightful discovery with Random Forest.</p>
+<p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-20T00:00:00-05:00" itemprop="datePublished">
         Oct 20, 2022
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      10 min read
+      12 min read
     
 </span></p>
 
     
-      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i> 
       
         <a class="category-tags-link" href="/bottoni/categories/#fastai">fastai</a>
         
@@ -96,12 +102,14 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2"><a href="#preamble">Preamble</a>
+<li class="toc-entry toc-h2">
+<a href="#preamble">Preamble</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#why-predicting-boxes-weight">Why predicting Boxes weight?</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#first-round">First Round</a>
+<li class="toc-entry toc-h2">
+<a href="#first-round">First Round</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#preprocessing">Preprocessing</a></li>
 <li class="toc-entry toc-h3"><a href="#fitting">Fitting</a></li>
@@ -109,22 +117,27 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#intermediate-result">Intermediate Result</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#second-round">Second Round</a>
+<li class="toc-entry toc-h2">
+<a href="#second-round">Second Round</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#feature-importances">Feature Importances</a></li>
 <li class="toc-entry toc-h3"><a href="#data-points-based-on-their-similarities">Data points based on their Similarities</a></li>
 <li class="toc-entry toc-h3"><a href="#intermediate-result-1">Intermediate Result</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#third-round">Third Round</a>
+<li class="toc-entry toc-h2">
+<a href="#third-round">Third Round</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#out-of-domain-data">Out-of-Domain Data</a></li>
+<li class="toc-entry toc-h3"><a href="#intermediate-result-2">Intermediate Result</a></li>
+<li class="toc-entry toc-h3"><a href="#fourth-round">Fourth Round</a></li>
+<li class="toc-entry toc-h3"><a href="#final-result">Final Result</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#ko">KO</a></li>
-<li class="toc-entry toc-h2"><a href="#open-points">Open Points</a></li>
 <li class="toc-entry toc-h2"><a href="#whats-next">What’s Next?</a></li>
-</ul><p><img src="/bottoni/images/forrest-gamp.png" alt="" title="Forrest Gump in a Random Forest"></p>
+<li class="toc-entry toc-h2"><a href="#open-points">Open Points</a></li>
+</ul>
+<p><img src="/bottoni/images/forrest-gamp.png" alt="" title="Forrest Gump in a Random Forest"></p>
 <h2 id="preamble">
 <a class="anchor" href="#preamble" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preamble</h2>
 <p>While the entire world is totally captured by Stable Diffusion, I’m experimenting <strong>randomly into the forest of Random Forest</strong>. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually <a href="https://en.wikipedia.org/wiki/Forrest_Gump">Forrest</a> is winning the game.</p>
@@ -459,7 +472,7 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 <h2 id="third-round">
 <a class="anchor" href="#third-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third Round</h2>
 
-<p>As showed by Jeremy, Random Forest can sin of Extrapolation problem (brain explosion emoticon).
+<p>As showed by Jeremy, Random Forest can sin of Extrapolation problem (<img class="emoji" title=":open_mouth:" alt=":open_mouth:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f62e.png" height="20" width="20">).
 ![[Pasted image 20221025172423.png]]</p>
 
 <p>It means, in this case, predictions are too low with new data.</p>
@@ -473,40 +486,115 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 <h3 id="out-of-domain-data">
 <a class="anchor" href="#out-of-domain-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Out-of-Domain Data</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_dom</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">xs_final</span><span class="p">,</span> <span class="n">valid_xs_final</span><span class="p">])</span>
-<span class="n">is_valid</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">xs_final</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_xs_final</span><span class="p">))</span>
+<p>How to understand if the data is distributed quite properly on training set and validation set?</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_dom</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">filtered_xs</span><span class="p">,</span> <span class="n">filtered_valid_xs</span><span class="p">])</span>
+<span class="n">is_valid</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">))</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">df_dom</span><span class="p">,</span> <span class="n">is_valid</span><span class="p">)</span>
-<span class="n">rf_feat_importance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">df_dom</span><span class="p">)[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">rf_feat_importance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">df_dom</span><span class="p">)[:</span><span class="mi">15</span><span class="p">]</span>
 </code></pre></div></div>
+<p>![[Pasted image 20221026103311.png]]</p>
 
-<p><strong>link to data leakage jeremy and scientific docs
-look at questions and reflections of Random-Forest-Aluminium-Tare-Weight-Copy1.ipynb
-use funny image and diagrams
-look if preprocessing is the right step which do all this stuff
-~do not put code but put image of output~
-data normalization can affect random forest regressor
-Retweet, save a life</strong></p>
+<p>Now, for each feature which vary a lot from training set and validation set, try to drop and check <code class="language-plaintext highlighter-rouge">mean_absolute_error</code>. Finally, select those that keep improving the model.</p>
 
-<h2 id="ko">
-<a class="anchor" href="#ko" aria-hidden="true"><span class="octicon octicon-link"></span></a>KO</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'orig'</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s">'id'</span><span class="p">,</span><span class="s">'weight'</span><span class="p">,</span> <span class="s">'international_alloy'</span><span class="p">,</span> <span class="s">'slim_alloy'</span><span class="p">,</span>
+          <span class="s">'pairing_alloy'</span><span class="p">,</span> <span class="s">'id_machine_article_description'</span><span class="p">,</span> <span class="s">'location_name'</span><span class="p">,</span> <span class="s">"last_name"</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">filtered_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">filtered_valid_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> <span class="n">valid_y</span><span class="p">))</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221026104401.png]]</p>
+
+<p>Let’s drop only <code class="language-plaintext highlighter-rouge">slim_alloy</code>.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s">'slim_alloy'</span><span class="p">]</span>
+
+<span class="n">xs_final</span> <span class="o">=</span> <span class="n">filtered_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">valid_xs</span> <span class="o">=</span> <span class="n">filtered_valid_xs</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">xs_final</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">valid_xs</span><span class="p">),</span> <span class="n">valid_y</span><span class="p">)</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221026104546.png]]</p>
+
+<p>Keep checking out of bag error:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m</span><span class="p">.</span><span class="n">oob_score_</span>
+</code></pre></div></div>
+<p>![[Pasted image 20221026104841.png]]</p>
+
+<h3 id="intermediate-result-2">
+<a class="anchor" href="#intermediate-result-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
+
+<p>Good news, working on <strong>out-of-domain data</strong> has improved both <code class="language-plaintext highlighter-rouge">mean_absolute_error</code> either <code class="language-plaintext highlighter-rouge">oob_score_</code>:</p>
+<ul>
+  <li>from <code class="language-plaintext highlighter-rouge">74.09</code> KG to <code class="language-plaintext highlighter-rouge">73.98</code> KG, validation set;</li>
+  <li>from <code class="language-plaintext highlighter-rouge">0.7070</code> to <code class="language-plaintext highlighter-rouge">0.7072</code>, <code class="language-plaintext highlighter-rouge">oob_score_</code>.</li>
+</ul>
+
+<p>What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there’s still lot of room to improve.
+![[Pasted image 20221026110706.png]]</p>
+
+<p>Some datapoints are consistently predicted wrong (dots at about <code class="language-plaintext highlighter-rouge">-900/-1000</code> and about <code class="language-plaintext highlighter-rouge">900/1000</code>). Other visual tools like <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix">Confusion matrix</a> , <strong>prediction confidence</strong>, <a href="http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/">treeinterpreter</a> can help to analyze this behavior.</p>
+
+<h3 id="fourth-round">
+<a class="anchor" href="#fourth-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fourth Round</h3>
+<p>Before to any hyper-mega-super tuning, I can try my last attempt removing older data.  Why?
+The application which manage the weighting/labeling process of scraps has been release about 2 years ago. Wouldn’t surprise me if I found some strange datapoints, especially during first period of usage where operators were not comfortable yet with the system.</p>
+
+<p>Re-processing whole steps removing older 12k datapoints, seems to have better baseline model.
+![[Pasted image 20221026121947.png]]</p>
+
+<p>There’s still miss-classification at around <code class="language-plaintext highlighter-rouge">-900/-1000</code> and <code class="language-plaintext highlighter-rouge">900/1000</code>, but it’s evident has been reached an improvement.</p>
+
+<h3 id="final-result">
+<a class="anchor" href="#final-result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final Result</h3>
+<ul>
+  <li>from  <code class="language-plaintext highlighter-rouge">73.98</code> KG to <code class="language-plaintext highlighter-rouge">72.17</code> KG, validation set;</li>
+  <li>from <code class="language-plaintext highlighter-rouge">0.7072</code> to <code class="language-plaintext highlighter-rouge">0.7141</code>, <code class="language-plaintext highlighter-rouge">oob_score_</code>.</li>
+</ul>
+
+<p>I think as baseline model is really good: fast to fit, easily interpretable and quite stable.
+All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
+
+<h2 id="whats-next">
+<a class="anchor" href="#whats-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s Next?</h2>
+
+<p>Once created a baseline model a simplified dataset, now it’s time to make a decision:</p>
+<ul>
+  <li>creating a NN model</li>
+  <li>or working on Radom Forest tuning</li>
+  <li>or switching to XGBoost model</li>
+</ul>
+
+<p>Remember to apply as much as possible <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto principle</a>:</p>
+
+<blockquote>
+  <p>…roughly 80% of consequences come from 20% of causes…</p>
+</blockquote>
+
+<p>It mean to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.</p>
+
+<p>So next steps:</p>
+<ul>
+  <li>I will implement a Neural Network model;</li>
+  <li>then I’ll combine NN with Random Forest;</li>
+  <li>the ensembles will work in parallel with a Computer Vision model which will try to classify the same problem (a box of scraps).</li>
+</ul>
+
+<p>All this staff is aimed to develop an alert system where departments are notified every time the prediction of models are too different from what’s happening during the weighting process.</p>
+
+<p>I’ve in mind already the application name: <strong>Box ClassifAI</strong>.</p>
+
+<p><strong>Keep lower scraps errors and push higher revenue. That’s it.</strong></p>
 
 <h2 id="open-points">
 <a class="anchor" href="#open-points" aria-hidden="true"><span class="octicon octicon-link"></span></a>Open Points</h2>
 <ul>
-  <li>What would happen if I play with categorical and continuous variables? Can them affect the prediction?</li>
+  <li>What happens if I play with categorical and continuous variables? Can them affect the prediction?</li>
   <li>Plotting <code class="language-plaintext highlighter-rouge">dendogram</code> and removing most correlated columns. Does it change the prediction? Are columns the same?</li>
-  <li>Why is confidence of prediction totally wrong when the deviation reach <code class="language-plaintext highlighter-rouge">100</code>? Why is prediction not so bad with greater value?</li>
+  <li>Why is confidence of prediction totally wrong when the deviation reach value <code class="language-plaintext highlighter-rouge">100</code>? Why is prediction not so bad with greater value?</li>
   <li>Partial dependency plots for multi-class-classifiers?</li>
-</ul>
-
-<h2 id="whats-next">
-<a class="anchor" href="#whats-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s Next?</h2>
-<ul>
-  <li>NN with simplified dataset.</li>
-  <li>Would be nice to add additional information. Start with weather data.</li>
-  <li>Developing an alert system where departments are notified every time the prediction of model is too different from what’s happening during the weighting process.</li>
-  <li>Combining computer vision model with the best model on tabular data.</li>
+  <li>Could improve Random Forest model with additional information like weather data?</li>
 </ul>
 
 <p>If you have any suggestions, recommendations, or corrections please reach out to me.</p>
@@ -516,7 +604,7 @@ Retweet, save a life</strong></p>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>We have developed few tools to speed up and manage the weighting and labelling process of the Aluminium scarp <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+      <p>We have developed few tools to speed up and manage the weighting and labelling process of the Aluminium scarps <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:4" role="doc-endnote">
 
@@ -525,7 +613,8 @@ Retweet, save a life</strong></p>
   </ol>
 </div>
 
-  </div><a class="u-url" href="/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" hidden></a>
+  </div>
+<a class="u-url" href="/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" hidden></a>
 </article>
 
       </div>
@@ -549,7 +638,11 @@ Retweet, save a life</strong></p>
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/b8ni" target="_blank" title="b8ni"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/bot_fra" target="_blank" title="bot_fra"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+    <div class="social-links">
+<ul class="social-media-list">
+<li><a rel="me" href="https://github.com/b8ni" target="_blank" title="b8ni"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#github"></use></svg></a></li>
+<li><a rel="me" href="https://twitter.com/bot_fra" target="_blank" title="bot_fra"><svg class="svg-icon grey"><use xlink:href="/bottoni/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
+</ul>
 </div>
 
   </div>
