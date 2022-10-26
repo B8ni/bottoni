@@ -10,35 +10,38 @@ title: How Random Forest Can Empower A Small Business
 ## Preamble
 While the entire world is totally captured by Stable Diffusion, I'm experimenting **randomly into the forest of Random Forest**. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually [Forrest](https://en.wikipedia.org/wiki/Forrest_Gump) is winning the game.
 
-### Why predicting Boxes weight?
-It's hard to fight entropy in my house. 
+### Why predicting Scraps Boxes weight?
+It's hard to fight entropy in my home. 
+
 It's exponentially hard to fight entropy in a plant, in an Aluminium plant precisely.
 
-The factory would gain lots of benefits when scraps are segregated, weighted and labeled properly[^1].
-Better the process and higher the impact on the revenue of the company (true story).
+The factory would gain lots of benefits when scraps are segregated, weighted and labeled in the right way[^1].
+**Better the process and higher the impact on the revenue of the company** (true story).
 
 The weighting process is simple: take the box, put it on an industrial scale, get the weight and repeat.
 
 The weighting process, although heavily based on an inductive flow, it's not enough. The operators have still room of errors.
-How can I solve this problem, without spending lot's of money? How can I monitoring the situation and eventually notify others departments? 
-Wrong answers only: Aluminium scarps data and Random Forest. 
+How can I solve this problem, without spending lot's of money? Wrong answers only: Random Forest is the answer. 
 
-I concluded that Boxes due of limited types of them, can be solved or partially solved with a classification model.
+I concluded that scraps box belongs to a specific set of weights: from 0 (no box) up to 1010 KG. Simply a set of ``10`` boxes. It brings to a problem to solve: **classification model**.
 
-Now let's see which one better performs.
+Structured data + classification problem = ``RandomForestClassifier``.
 
-**put a funny image here**
+![]({{ site.baseurl }}/images/scrap_box.jpg "Example of Aluminium Scrap Box")
 
 ## First Round
-**Model:** Random Forest Classifier.
-**Dataset:** Extended. CSV file, 82k rows and 33 columns.
-**Verbose:** I've joined most interesting tables, adding intentionally duplicated or closely correlated columns. May increase the noise but may drive to a better prediction as well.
+
+|**Model**   |**Dataset**   |
+|---|---|
+|Random Forest Classifier   |CSV file, 82k rows and 33 columns.
+
+The dataset has been created by joying most interesting tables, adding intentionally duplicated or closely correlated columns. May increase the noise or may drive to a better prediction?
 
 ### Preprocessing
-Since I already worked with this data, I found a subtle feature, which is a calculated field where would create lots of trouble in production environment.
-``net_weight`` is accused of Data Leakage so I firstly dropped it.
+Since I already worked with this data, I found a subtle feature, which is a calculated field where would create lots of troubles in production environment.
+``net_weight`` is accused of Data Leakage[^2][^3] so I firstly dropped it.
 
-Obviously, Data Leakage is an issue faced quite the end of experimentation but, IMHO, earlier you find and better it is. It's mean you understand enough the dataset.
+Obviously, Data Leakage is an issue faced later on experimentation but, IMHO, earlier you find and better it is. It's mean you have a good understanding of data.
 
 Via ``Categorify``, ``FillMissing``, ``cont_cat_split`` and ``RandomSplitter`` functions, the data is ready to be fitted.
 
@@ -73,9 +76,13 @@ def cont_cat_split(df, max_card=20, dep_var=None):
 ```
 For every column in dataframe, if it has more then 20 elements or it's a float, appends to continuous, otherwise categorical. I've no experience with FastAI API, but I suppose the library is full of such elegant and simple way to manage complex data and task.
 
-Once pre-processing step is completed, the dataframe is putted inside a ``TabularPandas``.
-``TabularPandas`` is an object. It's a simple wrapper with transforms.
-Transforms are functions which organize the data in an optimal format.
+Once pre-processing step is completed, the dataframe is wrapped into a ``TabularPandas``.
+``TabularPandas`` is an object. It's a simple ``DataFrame`` wrapper with transforms.
+Transforms are functions which organize the data in an optimal format. 
+
+>Machine learning models are only as good as the data that is used to train them.
+
+Better data format, better generalization.
 ```python
 from fastai.tabular.all import TabularPandas 
 to = TabularPandas(
@@ -87,10 +94,6 @@ to.train.xs.iloc[:3]
 ```
 ![]({{ site.baseurl }}/images/Pasted image 20221024142446.png)
 
->Machine learning models are only as good as the data that is used to train them.
-
-Better data format, better generalization.
-
 Now, save and train.
 ```python
 from fastai.tabular.all import save_pickle
@@ -99,11 +102,12 @@ save_pickle('to.pkl',to)
 
 ### Fitting
 
+Jeremy has developed a function which wraps ``RandomForestClassifier``. It turns useful later to apply some tuning.
+
 ```python
 from fastai.tabular.all import load_pickle
 load_pickle('to.pkl', to)
 ```
-Jeremy has developed a function which wraps ``RandomForestClassifier``. It turns useful later to play with attributes of function:
 ```python
 from sklearn.ensemble import RandomForestClassifier
 
@@ -116,12 +120,12 @@ def rf(xs, y, n_estimators=100,
 ```python
 m = rf(xs, y)
 ```
-A good error metrics to understand what's going on is a simple ``mean_absolute_error``:
+A good error metrics, to understand what's going on, is a simple ``mean_absolute_error``:
 ```python 
 from sklearn.metrics import mean_absolute_error
 mean_absolute_error(m.predict(xs), y), mean_absolute_error(m.predict(valid_xs), valid_y)
 ```
-![]({{ site.baseurl }}/images/Pasted image 20221024142733.png)![[]]
+![]({{ site.baseurl }}/images/Pasted image 20221024142733.png)
 
 What's ``mean_absolute_error``? Going to the [source code of scikit-learn](https://github.com/scikit-learn/scikit-learn/blob/36958fb24/sklearn/metrics/_regression.py#L141), I found line which calculate MAE:
 ```python
@@ -130,24 +134,29 @@ np.average(np.abs(y_pred - y_true), weights=sample_weight, axis=0)
 It means:
 1. calculate the delta between ``(y_pred - y_true)``
 2. take the absolute value ``np.abs`` of the whole rows ``axis=0``
-3. finally calculate the average with ``np.average``
+3. finally calculate the average with ``np.average`` function
 
-Nothing to say, simple enough.
+Nothing to add, simple enough.
 
 ### Out Of Bag Error
 
-Next to ``mean_absolute_error``s I have to place ``m.oob_score_`` which returns the accuracy of predictions on the residual rows not used during training.
-Obviously higher score, I should expect a better generalization on validation set.
+In addition to ``mean_absolute_error``s, I have to keep an eye on ``oob_score_`` attribute which returns the **accuracy of predictions** on the **residual rows scrapped during the training**.
+Obviously higher the score better the generalization on validation set.
 
 ```python
 m.oob_score_
 ```
 ![]({{ site.baseurl }}/images/Pasted image 20221025160903.png)
 
-There's so much resources where explain acutely and precisely what the hell OOB is. I'm not the right person to do that:
+There's so much resources where explain acutely and precisely what the hell OOB is. I'm not the right person to do that. To simplify the definition I've impressed in my mind the following tip by Jeremy:
 > My intuition for this is that, since every tree was trained with a different randomly selected subset of rows, out-of-bag error is a little like imagining that every tree therefore also has its own validation set. That validation set is simply the rows that were not selected for that tree's training.
 
 ### Intermediate Result
+
+|**Round**|**Set**   |**MAE**   |
+|---|---|---|
+|**1**|**Training**   |**``47.06``**
+|**1**|**Validation**   |**``73.49``**
 
 ``47.06`` and ``73.49`` are just numbers. But what does it mean?
 I have achieved, via a simple ``RandomForestClassifier`` with ``100`` trees (n_estimators), an average of:
@@ -156,10 +165,10 @@ I have achieved, via a simple ``RandomForestClassifier`` with ``100`` trees (n_e
 
 And an accuracy of ``0.709`` on the residual data not included in the fitting step.
 
-For this reason, there are multiple objectives to try to achieve: a good trade off should be met by the following chain:
+For this reason, there are multiple goals to try to achieve. A good trade off could be the following chain:
 ``small_enough_error > stability > maintainability``
 
-The next steps I'm going to walk will aim to improve the above chain.
+The next steps I'm going to walk, aims to improve the above chain.
 
 ## Second Round
 
@@ -435,14 +444,15 @@ I've in mind already the application name: **Box ClassifAI**.
 - Why is confidence of prediction totally wrong when the deviation reach value ``100``? Why is prediction not so bad with greater value? 
 - Partial dependency plots for multi-class-classifiers?
 - Could improve Random Forest model with additional information like weather data?
+- What's happen if I convert the problem into a regression one? May the result improve?
 
 
 **If you have any suggestions, recommendations, or corrections please reach out to me.**
 
 ---
 
-[^1]: We have developed few tools to speed up and manage the weighting and labelling process of the Aluminium scarps
-[^2]:
-[^3]: 
+[^1]: We have developed some tools to speed up and managing the process of the Aluminium scarps weighting
+[^2]: A gentle introduction to Data Leakage can be found on [Kaggle course](https://www.kaggle.com/code/alexisbcook/data-leakage)
+[^3]: A formal introduction to Data Leakage can be found on [Leakage in Data Mining paper](https://www.cs.umb.edu/~ding/history/470_670_fall_2011/papers/cs670_Tran_PreferredPaper_LeakingInDataMining.pdf)
 [^4]:
 [^5]: 
