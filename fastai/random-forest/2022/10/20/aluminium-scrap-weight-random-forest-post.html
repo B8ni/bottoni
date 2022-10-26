@@ -4,21 +4,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>How Random Forest Can Empower A Small Business | frabot</title>
+<title>How Random Forest Can Empower An Aluminium Business | frabot</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="How Random Forest Can Empower A Small Business" />
+<meta property="og:title" content="How Random Forest Can Empower An Aluminium Business" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Not so insightful discovery with Random Forest." />
-<meta property="og:description" content="Not so insightful discovery with Random Forest." />
-<link rel="canonical" href="https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" />
-<meta property="og:url" content="https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" />
+<meta name="description" content="Practical use case of Random Forest in Industrial environment." />
+<meta property="og:description" content="Practical use case of Random Forest in Industrial environment." />
+<link rel="canonical" href="https://b8ni.github.io/bottoni/fastai/random-forest/2022/10/20/aluminium-scrap-weight-random-forest-post.html" />
+<meta property="og:url" content="https://b8ni.github.io/bottoni/fastai/random-forest/2022/10/20/aluminium-scrap-weight-random-forest-post.html" />
 <meta property="og:site_name" content="frabot" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-10-20T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="How Random Forest Can Empower A Small Business" />
+<meta property="twitter:title" content="How Random Forest Can Empower An Aluminium Business" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-20T00:00:00-05:00","datePublished":"2022-10-20T00:00:00-05:00","description":"Not so insightful discovery with Random Forest.","headline":"How Random Forest Can Empower A Small Business","mainEntityOfPage":{"@type":"WebPage","@id":"https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html"},"url":"https://b8ni.github.io/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-20T00:00:00-05:00","datePublished":"2022-10-20T00:00:00-05:00","description":"Practical use case of Random Forest in Industrial environment.","headline":"How Random Forest Can Empower An Aluminium Business","mainEntityOfPage":{"@type":"WebPage","@id":"https://b8ni.github.io/bottoni/fastai/random-forest/2022/10/20/aluminium-scrap-weight-random-forest-post.html"},"url":"https://b8ni.github.io/bottoni/fastai/random-forest/2022/10/20/aluminium-scrap-weight-random-forest-post.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/bottoni/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://b8ni.github.io/bottoni/feed.xml" title="frabot" /><link rel="shortcut icon" type="image/x-icon" href="/bottoni/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -77,8 +77,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">How Random Forest Can Empower A Small Business</h1>
-<p class="page-description">Not so insightful discovery with Random Forest.</p>
+    <h1 class="post-title p-name" itemprop="name headline">How Random Forest Can Empower An Aluminium Business</h1>
+<p class="page-description">Practical use case of Random Forest in Industrial environment.</p>
 <p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-20T00:00:00-05:00" itemprop="datePublished">
         Oct 20, 2022
       </time>
@@ -93,6 +93,9 @@ window.onload = wrap_img;
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i> 
       
         <a class="category-tags-link" href="/bottoni/categories/#fastai">fastai</a>
+         
+      
+        <a class="category-tags-link" href="/bottoni/categories/#random-forest">random-forest</a>
         
       
       </p>
@@ -300,43 +303,9 @@ Obviously higher the score better the generalization on validation set.</p>
 
 <h3 id="intermediate-result">
 <a class="anchor" href="#intermediate-result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Round</strong></th>
-      <th><strong>Set</strong></th>
-      <th><strong>MAE</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Training</strong></td>
-      <td><strong><code class="language-plaintext highlighter-rouge">47.06</code></strong></td>
-    </tr>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Validation</strong></td>
-      <td><strong><code class="language-plaintext highlighter-rouge">73.49</code></strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Round</strong></th>
-      <th><strong>OOB Score</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td>** <code class="language-plaintext highlighter-rouge">0.709</code> **</td>
-    </tr>
-  </tbody>
-</table>
+<p>|<strong>Round</strong>|<strong>OOB Score</strong>|MAE Training set |MAE Validation set|
+|—|—|—|—|
+|<strong><code class="language-plaintext highlighter-rouge">1</code></strong>|<strong><code class="language-plaintext highlighter-rouge">0.709</code></strong>  | <strong><code class="language-plaintext highlighter-rouge">47.06</code></strong>|<strong><code class="language-plaintext highlighter-rouge">73.49</code></strong>|</p>
 
 <p><code class="language-plaintext highlighter-rouge">47.06</code> and <code class="language-plaintext highlighter-rouge">73.49</code> are just numbers. But what does it mean?
 I have achieved, via a simple <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code> with <code class="language-plaintext highlighter-rouge">100</code> trees (n_estimators), an average of:</p>
@@ -366,11 +335,11 @@ I have achieved, via a simple <code class="language-plaintext highlighter-rouge"
 </li>
   <li>finding redundant columns, AKA <code class="language-plaintext highlighter-rouge">cluster_columns</code>
 </li>
-  <li>analyzing prediction confidence of the model, AKA <code class="language-plaintext highlighter-rouge">std</code> of each tree</li>
+  <li>analyzing prediction confidence of the model, AKA <code class="language-plaintext highlighter-rouge">std</code> of each tree prediction</li>
   <li>analyzing the relationship between independent variables and dependent variable, AKA <code class="language-plaintext highlighter-rouge">partial_dependece</code>
 </li>
   <li>finding out of domain data, AKA extrapolation problem</li>
-  <li>analyzing where most wrong prediction happens, AKA <code class="language-plaintext highlighter-rouge">confusion_matrix</code>
+  <li>analyzing where most wrong predictions go, AKA <code class="language-plaintext highlighter-rouge">confusion_matrix</code>
 </li>
 </ol>
 
@@ -470,8 +439,7 @@ Giving a threshold of <code class="language-plaintext highlighter-rouge">0.8</co
 </code></pre></div></div>
 <p><img src="/bottoni/images/Pasted%20image%2020221024163716.png" alt=""></p>
 
-<p>An alternative to <code class="language-plaintext highlighter-rouge">heatmap</code> is the helper function <code class="language-plaintext highlighter-rouge">cluster_columns</code> which implement a <code class="language-plaintext highlighter-rouge">dendrogram</code> chart.
-[link to dendogram chart. understand and create a separated post for each important function]</p>
+<p>An alternative to <code class="language-plaintext highlighter-rouge">heatmap</code> is the helper function <code class="language-plaintext highlighter-rouge">cluster_columns</code> which implement a <code class="language-plaintext highlighter-rouge">dendrogram</code> chart.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># https://github.com/fastai/fastbook/blob/master/09_tabular.ipynb
 </span><span class="kn">from</span> <span class="nn">scipy.cluster</span> <span class="kn">import</span> <span class="n">hierarchy</span> <span class="k">as</span> <span class="n">hc</span>
 
@@ -521,13 +489,38 @@ Giving a threshold of <code class="language-plaintext highlighter-rouge">0.8</co
 <h3 id="intermediate-result-1">
 <a class="anchor" href="#intermediate-result-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
 
+<table>
+  <thead>
+    <tr>
+      <th><strong>Round</strong></th>
+      <th><strong>OOB Score</strong></th>
+      <th>MAE Training set</th>
+      <th>MAE Validation set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">0.709</code></td>
+      <td><code class="language-plaintext highlighter-rouge">47.06</code></td>
+      <td><code class="language-plaintext highlighter-rouge">73.49</code></td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">0.708</code></strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">49.37</code></strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">74.09</code></strong></td>
+    </tr>
+  </tbody>
+</table>
+
 <p>Not much worse than the model with all the fields. I’ve reduced some more columns (from <code class="language-plaintext highlighter-rouge">25</code> to <code class="language-plaintext highlighter-rouge">20</code>) and kept stable <code class="language-plaintext highlighter-rouge">oob_score_</code>.
 Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 
 <h2 id="third-round">
 <a class="anchor" href="#third-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third Round</h2>
 
-<p>As showed by Jeremy, Random Forest can sin of Extrapolation problem (<img class="emoji" title=":open_mouth:" alt=":open_mouth:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f62e.png" height="20" width="20">).
+<p>As showed by Jeremy, Random Forest can suffer of Extrapolation problem (<img class="emoji" title=":open_mouth:" alt=":open_mouth:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f62e.png" height="20" width="20">).
 <img src="/bottoni/images/Pasted%20image%2020221025172423.png" alt=""></p>
 
 <p>It means, in this case, predictions are too low with new data.</p>
@@ -580,67 +573,131 @@ Removing redundant features help to prevent <strong>overfitting</strong>.</p>
 <h3 id="intermediate-result-2">
 <a class="anchor" href="#intermediate-result-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
 
-<p>Good news, working on <strong>out-of-domain data</strong> has improved both <code class="language-plaintext highlighter-rouge">mean_absolute_error</code> either <code class="language-plaintext highlighter-rouge">oob_score_</code>:</p>
+<table>
+  <thead>
+    <tr>
+      <th><strong>Round</strong></th>
+      <th><strong>OOB Score</strong></th>
+      <th>MAE Training set</th>
+      <th>MAE Validation set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">0.709</code></td>
+      <td><code class="language-plaintext highlighter-rouge">47.06</code></td>
+      <td><code class="language-plaintext highlighter-rouge">73.49</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">0.708</code></td>
+      <td><code class="language-plaintext highlighter-rouge">49.37</code></td>
+      <td><code class="language-plaintext highlighter-rouge">74.09</code></td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">0.707</code></strong></td>
+      <td> </td>
+      <td><strong><code class="language-plaintext highlighter-rouge">73.98</code></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Good news, working on <strong>out-of-domain data</strong> has improved  <code class="language-plaintext highlighter-rouge">mean_absolute_error</code> stabilize <code class="language-plaintext highlighter-rouge">oob_score_</code>:</p>
 <ul>
   <li>from <code class="language-plaintext highlighter-rouge">74.09</code> KG to <code class="language-plaintext highlighter-rouge">73.98</code> KG, validation set;</li>
-  <li>from <code class="language-plaintext highlighter-rouge">0.7070</code> to <code class="language-plaintext highlighter-rouge">0.7072</code>, <code class="language-plaintext highlighter-rouge">oob_score_</code>.</li>
+  <li>from <code class="language-plaintext highlighter-rouge">0.708</code> to <code class="language-plaintext highlighter-rouge">0.707</code>, <code class="language-plaintext highlighter-rouge">oob_score_</code>.</li>
 </ul>
 
 <p>What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there’s still lot of room to improve.
 <img src="/bottoni/images/Pasted%20image%2020221026110706.png" alt=""></p>
 
-<p>Some datapoints are consistently predicted wrong (dots at about <code class="language-plaintext highlighter-rouge">-900/-1000</code> and about <code class="language-plaintext highlighter-rouge">900/1000</code>). Other visual tools like <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix">Confusion matrix</a> , <strong>prediction confidence</strong>, <a href="http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/">treeinterpreter</a> can help to analyze this behavior.</p>
+<p>Some datapoints are consistently predicted wrong (dots at about <code class="language-plaintext highlighter-rouge">-900/-1000</code> and about <code class="language-plaintext highlighter-rouge">900/1000</code>). Other visual tools like <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix">Confusion matrix</a> , <strong>prediction confidence</strong>, <a href="http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/">treeinterpreter</a> can help to analyze those behaviors.</p>
 
 <h2 id="final-round">
 <a class="anchor" href="#final-round" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final Round</h2>
-<p>Before to any hyper-mega-super tuning, I can try my last attempt removing older data.  Why?
-The application which manage the weighting/labeling process of scraps has been release about 2 years ago. Wouldn’t surprise me if I found some strange datapoints, especially during first period of usage where operators were not comfortable yet with the system.</p>
+<p>Before any hyper-mega-super-giga tuning, my last attempt is to remove older data.</p>
+
+<p>Why? The application which manages the weighting/labeling process of scraps<sup id="fnref:1:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> has been released about 2 years ago. Wouldn’t surprise me if I found some strange data points, especially during first period of usage where operators were not comfortable yet with the system.</p>
 
 <p>Re-processing whole steps removing older 12k datapoints, seems to have better baseline model.
 <img src="/bottoni/images/Pasted%20image%2020221026121947.png" alt=""></p>
 
-<p>There’s still miss-classification at around <code class="language-plaintext highlighter-rouge">-900/-1000</code> and <code class="language-plaintext highlighter-rouge">900/1000</code>, but it’s evident has been reached an improvement.</p>
+<p>There’s still miss-classification at around <code class="language-plaintext highlighter-rouge">-900/-1000</code> and <code class="language-plaintext highlighter-rouge">900/1000</code>, it’s worth investigating. However it’s evident has been achieved an improvement.</p>
 
 <h3 id="result">
 <a class="anchor" href="#result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Result</h3>
-<ul>
-  <li>from  <code class="language-plaintext highlighter-rouge">73.98</code> KG to <code class="language-plaintext highlighter-rouge">72.17</code> KG, validation set;</li>
-  <li>from <code class="language-plaintext highlighter-rouge">0.7072</code> to <code class="language-plaintext highlighter-rouge">0.7141</code>, <code class="language-plaintext highlighter-rouge">oob_score_</code>.</li>
-</ul>
 
-<p>I think as baseline model is really good: fast to fit, easily interpretable and quite stable.
-All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
+<table>
+  <thead>
+    <tr>
+      <th><strong>Round</strong></th>
+      <th><strong>OOB Score</strong></th>
+      <th>MAE Training set</th>
+      <th>MAE Validation set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">0.709</code></td>
+      <td><code class="language-plaintext highlighter-rouge">47.06</code></td>
+      <td><code class="language-plaintext highlighter-rouge">73.49</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">0.708</code></td>
+      <td><code class="language-plaintext highlighter-rouge">49.37</code></td>
+      <td><code class="language-plaintext highlighter-rouge">74.09</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code class="language-plaintext highlighter-rouge">0.707</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">73.98</code></td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">0.714</code></strong></td>
+      <td> </td>
+      <td><strong><code class="language-plaintext highlighter-rouge">72.17</code></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I think as baseline model is good entry level: fast to fit, easily interpretable and quite stable.</p>
+
+<p><strong>What I want to point out is that all this has been possible with few KBs of data, a laptop and a mediocre baseline model, so avoiding to spend several thousand dollars on revamping of machines!</strong></p>
 
 <h2 id="whats-next">
 <a class="anchor" href="#whats-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s Next?</h2>
 
-<p>Once created a baseline model a simplified dataset, now it’s time to make a decision:</p>
+<p>Once created a baseline model on simplified dataset, it’s time to make a decision:</p>
 <ul>
   <li>creating a NN model</li>
   <li>or working on Radom Forest tuning</li>
   <li>or switching to XGBoost model</li>
 </ul>
 
-<p>Remember to apply as much as possible <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto principle</a>:</p>
-
 <blockquote>
   <p>…roughly 80% of consequences come from 20% of causes…</p>
 </blockquote>
 
-<p>It means to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.</p>
+<p>As per <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto principle</a>, it means to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.</p>
 
 <p>So next steps:</p>
 <ul>
-  <li>I will implement a Neural Network model;</li>
-  <li>then I’ll combine NN with Random Forest;</li>
+  <li>I will implement a Neural Network model</li>
+  <li>then I’ll combine NN with Random Forest</li>
   <li>the ensembles will work in parallel with a Computer Vision model which will try to classify the same problem (a box of scraps).</li>
 </ul>
 
-<p>All this staff is aimed to develop an alert system where departments are notified every time the prediction of models are too different from what’s happening during the weighting process.</p>
+<p>All those stuffs are aimed to develop a system where departments are notified every time the prediction of models are too different from what’s happening during the weighting process.</p>
 
 <p>I’ve in mind already the application name: <strong>Box ClassifAI</strong>.</p>
 
-<p><strong>Keep lower scraps errors and push higher revenue. That’s it.</strong></p>
+<p><strong>Keep the scraps errors lower and push higher the revenue.  That’s it</strong>.</p>
 
 <h2 id="open-points">
 <a class="anchor" href="#open-points" aria-hidden="true"><span class="octicon octicon-link"></span></a>Open Points</h2>
@@ -660,7 +717,7 @@ All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>We have developed some tools to speed up and managing the process of the Aluminium scarps weighting <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+      <p>We have developed some tools to speed up and managing the process of the Aluminium scarps weighting <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">↩<sup>2</sup></a></p>
     </li>
     <li id="fn:2" role="doc-endnote">
       <p>A gentle introduction to Data Leakage can be found on <a href="https://www.kaggle.com/code/alexisbcook/data-leakage">Kaggle course</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
@@ -669,14 +726,13 @@ All this with with few KBs of data, a laptop and a mediocre baseline model.</p>
       <p>A formal introduction to Data Leakage can be found on <a href="https://www.cs.umb.edu/~ding/history/470_670_fall_2011/papers/cs670_Tran_PreferredPaper_LeakingInDataMining.pdf">Leakage in Data Mining paper</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:4" role="doc-endnote">
-
-      <p><a href="#fnref:4" class="reversefootnote" role="doc-backlink">↩</a></p>
+      <p>Weight - Box Weight = Net Weight <a href="#fnref:4" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>
 
   </div>
-<a class="u-url" href="/bottoni/fastai/2022/10/20/aluminium-scrap-weight-random-forest-post.html" hidden></a>
+<a class="u-url" href="/bottoni/fastai/random-forest/2022/10/20/aluminium-scrap-weight-random-forest-post.html" hidden></a>
 </article>
 
       </div>
