@@ -3,7 +3,7 @@ toc: true
 layout: post
 description: Practical use case of Random Forest in Industrial environment.
 categories: [fastai]
-title: How Random Forest Can Empower An Aluminium Plant 
+title: How Random Forest Can Empower A Plant 
 ---
 
 ![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
@@ -21,9 +21,9 @@ The factory would gain lots of benefits when scraps are segregated, weighted and
 The weighting process is simple: take the box, put it on an industrial scale, get the weight and repeat.
 
 The weighting process, although heavily based on an inductive flow, it's not enough. The operators have still room of errors.
-How can I solve this problem, without spending lot's of money? Wrong answers only: Random Forest is the answer. 
+How can I solve this problem, without spending lot's of money? Wrong answers only: **Random Forest is the answer**. 
 
-I concluded that scraps box belongs to a specific set of weights: from 0 (no box) up to 1010 KG. Simply a set of ``10`` boxes. It brings to a problem to solve: **classification model**.
+I concluded that scraps box belongs to a specific set of weights: from 0 (no box) up to 1010 KG. Simply a set of ``10`` boxes. It brings to a problem to solve: **classification problem**.
 
 Structured data + classification problem = ``RandomForestClassifier``.
 
@@ -148,15 +148,14 @@ m.oob_score_
 ```
 ![]({{ site.baseurl }}/images/Pasted image 20221025160903.png)
 
-There's so much resources where explain acutely and precisely what the hell OOB is. I'm not the right person to do that. To simplify the definition I've impressed in my mind the following tip by Jeremy:
+There's so much resources where explain acutely and precisely what the hell OOB is. I'm not the right person to do that. To simplify the definition I've impressed in my mind the following raccomandation by Jeremy:
 > My intuition for this is that, since every tree was trained with a different randomly selected subset of rows, out-of-bag error is a little like imagining that every tree therefore also has its own validation set. That validation set is simply the rows that were not selected for that tree's training.
 
 ### Intermediate Result
-|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+
+|**Round**|**OOB Score**|**MAE Training set** |**MAE Validation set**|
 |---|---|---|---|
-|**``1``**|**``0.709``**  | **``47.06``**|**``73.49``**|
-
-
+|**``1``**  |**``0.709``**  | **``47.06``**|**``73.49``**|
 
 ``47.06`` and ``73.49`` are just numbers. But what does it mean?
 I have achieved, via a simple ``RandomForestClassifier`` with ``100`` trees (n_estimators), an average of:
@@ -165,7 +164,7 @@ I have achieved, via a simple ``RandomForestClassifier`` with ``100`` trees (n_e
 
 And an accuracy of ``0.709`` on the residual data not included in the fitting step.
 
-For this reason, there are multiple goals to try to achieve. A good trade off could be the following chain:
+It's clear there are multiple goals to try to achieve. A good trade off could be the following chain:
 ``small_enough_error > stability > maintainability``
 
 The next steps I'm going to walk, aims to improve the above chain.
@@ -197,7 +196,7 @@ fi[:5]
 
 According to the above table:
 - the box weight prediction is mainly influenced by ``weight`` itself[^4]. Sounds reasonable;
-- ``id_machine``, in other words the machine which generates scraps, is the second most indicator of box weight prediction. Sounds reasonable as well;
+- ``id_machine``, in other words the machine which generates scraps, is the second most important indicator of box weight prediction. Sounds reasonable as well;
 - ``id_machine_article_description`` is the combination between ``id_machine``, ``article`` and ``description_machine``, where ``article`` is the thickness range of scarps (Ex.: from 0.5mm to 0.25mm);
 - percentage of ``id`` and ``timestamp`` is too similar. Maybe, periodically, I can expect a specific type of scraps? 
 - ``code_machine`` is the short name of machine;
@@ -244,7 +243,7 @@ Has been achieved few improvements:
 
 Now, let's hunt redundant features.
 
-### Data points based on their Similarities
+### Redundant Features
 ```python
 # https://stackoverflow.com/questions/17778394/list-highest-correlation-pairs-from-a-large-correlation-matrix-in-pandas
 def corr_filter(x: pd.DataFrame, bound: float):
@@ -401,11 +400,11 @@ m.oob_score_
 |2|``0.708``   |`49.37`|``74.09``|
 |**3**|**``0.707``**   ||**``73.98``**|
 
-Good news, working on **out-of-domain data** has improved  ``mean_absolute_error`` stabilize ``oob_score_``:
+Good news, working on **out-of-domain data** has improved  ``mean_absolute_error`` and stabilize ``oob_score_``:
 - from ``74.09`` KG to ``73.98`` KG, validation set;
 - from ``0.708`` to ``0.707``, ``oob_score_``.
 
-What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there's still lot of room to improve.
+What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there's still lot of room of improvement.
 ![]({{ site.baseurl }}/images/Pasted image 20221026110706.png)
 
 Some datapoints are consistently predicted wrong (dots at about ``-900/-1000`` and about ``900/1000``). Other visual tools like [Confusion matrix](https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix) , **prediction confidence**, [treeinterpreter](http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/) can help to analyze those behaviors.  
@@ -431,18 +430,18 @@ There's still miss-classification at around ``-900/-1000`` and ``900/1000``, it'
 
 I think as baseline model is good entry level: fast to fit, easily interpretable and quite stable.
 
-**What I want to point out is that all this has been possible with few KBs of data, a laptop and a mediocre baseline model, so avoiding to spend several thousand dollars on revamping of machines!**
+**What I want to point out is that this small experimentation has been possible with few KBs of data, a laptop and a mediocre baseline model. An empowered model version, will avoid to spend several thousand dollars on revamping of machines!**
 
 ## What's Next?
 
 Once created a baseline model on simplified dataset, it's time to make a decision: 
 - creating a NN model
-- or working on Radom Forest tuning
+- or working on [Radom Forest tuning](https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74)
 - or switching to XGBoost model 
 
 > ...roughly 80% of consequences come from 20% of causes...
 
-As per [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle), it means to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.
+As per [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle), it means, for me, to try to leverage and get as good result as soon as possible while keeping at the minimum the effort.
 
 So next steps:
 - I will implement a Neural Network model
