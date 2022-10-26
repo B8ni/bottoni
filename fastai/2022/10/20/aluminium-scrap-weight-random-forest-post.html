@@ -302,26 +302,28 @@ Obviously higher the score better the generalization on validation set.</p>
 <a class="anchor" href="#intermediate-result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intermediate Result</h3>
 
 <table>
-  <thead>
-    <tr>
-      <th><strong>Round</strong></th>
-      <th><strong>Set</strong></th>
-      <th><strong>MAE</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Training</strong></td>
-      <td><strong><code class="language-plaintext highlighter-rouge">47.06</code></strong></td>
-    </tr>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Validation</strong></td>
-      <td><strong><code class="language-plaintext highlighter-rouge">73.49</code></strong></td>
-    </tr>
-  </tbody>
-</table>
+<tr>
+<th>MAE </th>
+<th>OOB</th>
+</tr>
+<tr>
+<td>
+
+|**Round**|**Set**   |**MAE**   |
+|---|---|---|
+|**1**|**Training**   |**``47.06``**|
+|**1**|**Validation**   |**``73.49``**
+
+
+</td>
+<td>
+
+|**Round**|**Score**|
+|---|---|
+|**1**|** ``0.709`` **   |
+
+</td>
+</tr> </table>
 
 <p><code class="language-plaintext highlighter-rouge">47.06</code> and <code class="language-plaintext highlighter-rouge">73.49</code> are just numbers. But what does it mean?
 I have achieved, via a simple <code class="language-plaintext highlighter-rouge">RandomForestClassifier</code> with <code class="language-plaintext highlighter-rouge">100</code> trees (n_estimators), an average of:</p>
