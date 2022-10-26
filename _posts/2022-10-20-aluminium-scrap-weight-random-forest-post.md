@@ -1,9 +1,9 @@
 ---
 toc: true
 layout: post
-description: Not so insightful discovery with Random Forest.
-categories: [fastai]
-title: How Random Forest Can Empower A Small Business 
+description: Practical use case of Random Forest in Industrial environment.
+categories: [fastai, random-forest]
+title: How Random Forest Can Empower An Aluminium Business 
 ---
 
 ![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
@@ -152,15 +152,10 @@ There's so much resources where explain acutely and precisely what the hell OOB 
 > My intuition for this is that, since every tree was trained with a different randomly selected subset of rows, out-of-bag error is a little like imagining that every tree therefore also has its own validation set. That validation set is simply the rows that were not selected for that tree's training.
 
 ### Intermediate Result
+|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+|---|---|---|---|
+|**``1``**|**``0.709``**  | **``47.06``**|**``73.49``**|
 
-|**Round**|**Set**   |**MAE**   |
-|---|---|---|
-|**1**|**Training**   |**``47.06``**|
-|**1**|**Validation**   |**``73.49``**
-
-|**Round**|**OOB Score**|
-|---|---|
-|**1**|** ``0.709`` **   |
 
 
 ``47.06`` and ``73.49`` are just numbers. But what does it mean?
@@ -182,10 +177,10 @@ The next steps I'm going to walk, aims to improve the above chain.
 1. analyzing the most important columns, AKA ``feature_importances_``
 2. analyzing the prediction behavior for each row, AKA ``treeinterpreter``
 3. finding redundant columns, AKA ``cluster_columns``
-4. analyzing prediction confidence of the model, AKA ``std`` of each tree
+4. analyzing prediction confidence of the model, AKA ``std`` of each tree prediction
 5. analyzing the relationship between independent variables and dependent variable, AKA ``partial_dependece``
 6. finding out of domain data, AKA extrapolation problem
-7. analyzing where most wrong prediction happens, AKA ``confusion_matrix``
+7. analyzing where most wrong predictions go, AKA ``confusion_matrix``
 
 ### Feature Importances
 
@@ -278,7 +273,6 @@ plt.show()
 ![]({{ site.baseurl }}/images/Pasted image 20221024163716.png)
 
 An alternative to ``heatmap`` is the helper function ``cluster_columns`` which implement a ``dendrogram`` chart.
-[link to dendogram chart. understand and create a separated post for each important function]
 ```python
 # https://github.com/fastai/fastbook/blob/master/09_tabular.ipynb
 from scipy.cluster import hierarchy as hc
@@ -336,12 +330,19 @@ m.oob_score_
 
 ### Intermediate Result
 
+
+|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+|---|---|---|---|
+|1|``0.709``  | ``47.06``|`73.49`|
+|**2**|**``0.708``**   |**`49.37`**|**``74.09``**|
+
+
 Not much worse than the model with all the fields. I've reduced some more columns (from ``25`` to ``20``) and kept stable ``oob_score_``.
 Removing redundant features help to prevent **overfitting**.
 
 ## Third Round
 
-As showed by Jeremy, Random Forest can sin of Extrapolation problem (:open_mouth:).
+As showed by Jeremy, Random Forest can suffer of Extrapolation problem (:open_mouth:).
 ![]({{ site.baseurl }}/images/Pasted image 20221025172423.png)
 
 It means, in this case, predictions are too low with new data.
@@ -394,54 +395,65 @@ m.oob_score_
 
 ### Intermediate Result
 
-Good news, working on **out-of-domain data** has improved both ``mean_absolute_error`` either ``oob_score_``:
+|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+|---|---|---|---|
+|1|``0.709``  | ``47.06``|`73.49`|
+|2|``0.708``   |`49.37`|``74.09``|
+|**3**|**``0.707``**   ||**``73.98``**|
+
+Good news, working on **out-of-domain data** has improved  ``mean_absolute_error`` stabilize ``oob_score_``:
 - from ``74.09`` KG to ``73.98`` KG, validation set;
-- from ``0.7070`` to ``0.7072``, ``oob_score_``.
+- from ``0.708`` to ``0.707``, ``oob_score_``.
 
 What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there's still lot of room to improve.
 ![]({{ site.baseurl }}/images/Pasted image 20221026110706.png)
 
-Some datapoints are consistently predicted wrong (dots at about ``-900/-1000`` and about ``900/1000``). Other visual tools like [Confusion matrix](https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix) , **prediction confidence**, [treeinterpreter](http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/) can help to analyze this behavior.  
+Some datapoints are consistently predicted wrong (dots at about ``-900/-1000`` and about ``900/1000``). Other visual tools like [Confusion matrix](https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix) , **prediction confidence**, [treeinterpreter](http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/) can help to analyze those behaviors.  
 
 ## Final Round
-Before to any hyper-mega-super tuning, I can try my last attempt removing older data.  Why?
-The application which manage the weighting/labeling process of scraps has been release about 2 years ago. Wouldn't surprise me if I found some strange datapoints, especially during first period of usage where operators were not comfortable yet with the system.
+Before any hyper-mega-super-giga tuning, my last attempt is to remove older data.  
+
+Why? The application which manages the weighting/labeling process of scraps[^1] has been released about 2 years ago. Wouldn't surprise me if I found some strange data points, especially during first period of usage where operators were not comfortable yet with the system.
 
 Re-processing whole steps removing older 12k datapoints, seems to have better baseline model.
 ![]({{ site.baseurl }}/images/Pasted image 20221026121947.png)
 
-There's still miss-classification at around ``-900/-1000`` and ``900/1000``, but it's evident has been reached an improvement.
+There's still miss-classification at around ``-900/-1000`` and ``900/1000``, it's worth investigating. However it's evident has been achieved an improvement.
 
 ### Result
-- from  ``73.98`` KG to ``72.17`` KG, validation set;
-- from ``0.7072`` to ``0.7141``, ``oob_score_``.
 
-I think as baseline model is really good: fast to fit, easily interpretable and quite stable.
-All this with with few KBs of data, a laptop and a mediocre baseline model. 
+|**Round**|**OOB Score**|MAE Training set |MAE Validation set|
+|---|---|---|---|
+|1|``0.709``  | ``47.06``|`73.49`|
+|2|``0.708``   |`49.37`|``74.09``|
+|3|``0.707``   ||``73.98``|
+|**4**|**``0.714``**   ||**``72.17``**|
+
+I think as baseline model is good entry level: fast to fit, easily interpretable and quite stable.
+
+**What I want to point out is that all this has been possible with few KBs of data, a laptop and a mediocre baseline model, so avoiding to spend several thousand dollars on revamping of machines!**
 
 ## What's Next?
 
-Once created a baseline model a simplified dataset, now it's time to make a decision: 
+Once created a baseline model on simplified dataset, it's time to make a decision: 
 - creating a NN model
 - or working on Radom Forest tuning
 - or switching to XGBoost model 
 
-Remember to apply as much as possible [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle):
-
 > ...roughly 80% of consequences come from 20% of causes...
 
-It means to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.
+As per [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle), it means to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.
 
 So next steps:
-- I will implement a Neural Network model;
-- then I'll combine NN with Random Forest;
+- I will implement a Neural Network model
+- then I'll combine NN with Random Forest
 - the ensembles will work in parallel with a Computer Vision model which will try to classify the same problem (a box of scraps). 
 
-All this staff is aimed to develop an alert system where departments are notified every time the prediction of models are too different from what's happening during the weighting process. 
+All those stuffs are aimed to develop a system where departments are notified every time the prediction of models are too different from what's happening during the weighting process. 
 
 I've in mind already the application name: **Box ClassifAI**.
 
-**Keep lower scraps errors and push higher revenue. That's it.**
+**Keep the scraps errors lower and push higher the revenue.  That's it**.
 
 ## Open Points
 - What happens if I play with categorical and continuous variables? Can them affect the prediction?
@@ -452,6 +464,7 @@ I've in mind already the application name: **Box ClassifAI**.
 - What's happen if I convert the problem into a regression one? May the result improve?
 
 
+
 **If you have any suggestions, recommendations, or corrections please reach out to me.**
 
 ---
@@ -459,5 +472,5 @@ I've in mind already the application name: **Box ClassifAI**.
 [^1]: We have developed some tools to speed up and managing the process of the Aluminium scarps weighting
 [^2]: A gentle introduction to Data Leakage can be found on [Kaggle course](https://www.kaggle.com/code/alexisbcook/data-leakage)
 [^3]: A formal introduction to Data Leakage can be found on [Leakage in Data Mining paper](https://www.cs.umb.edu/~ding/history/470_670_fall_2011/papers/cs670_Tran_PreferredPaper_LeakingInDataMining.pdf)
-[^4]:
-[^5]: 
+[^4]: Weight - Box Weight = Net Weight
+[^5]: A not so far and futuristic classifier model which defines the right weight of box
