@@ -1,5 +1,3 @@
-![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
-
 ---
 toc: true
 layout: post
@@ -7,6 +5,8 @@ description: Not so insightful discovery with Random Forest.
 categories: [fastai]
 title: How Random Forest Can Empower A Small Business 
 ---
+
+![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
 
 ## Preamble
 While the entire world is totally captured by Stable Diffusion, I'm experimenting **randomly into the forest of Random Forest**. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually [Forrest](https://en.wikipedia.org/wiki/Forrest_Gump) is winning the game.
