@@ -7,7 +7,6 @@ title: How Random Forest Can Empower A Small Business
 ---
 
 ![]({{ site.baseurl }}/images/forrest-gamp.png "Forrest Gump in a Random Forest")
-
 ## Preamble
 While the entire world is totally captured by Stable Diffusion, I'm experimenting **randomly into the forest of Random Forest**. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually [Forrest](https://en.wikipedia.org/wiki/Forrest_Gump) is winning the game.
 
@@ -143,7 +142,7 @@ Obviously higher score, I should expect a better generalization on validation se
 ```python
 m.oob_score_
 ```
-![[Pasted image 20221025160903.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025160903.png)
 
 There's so much resources where explain acutely and precisely what the hell OOB is. I'm not the right person to do that:
 > My intuition for this is that, since every tree was trained with a different randomly selected subset of rows, out-of-bag error is a little like imagining that every tree therefore also has its own validation set. That validation set is simply the rows that were not selected for that tree's training.
@@ -185,7 +184,7 @@ def rf_feat_importance(m, df):
 fi = rf_feat_importance(m, xs)
 fi[:5]
 ```
-![[Pasted image 20221024145132.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221024145132.png)
 
 According to the above table:
 - the box weight prediction is mainly influenced by ``weight`` itself[^4]. Sounds reasonable;
@@ -205,7 +204,7 @@ def plot_fi(fi):
 
 plot_fi(fi[:30]);
 ```
-![[Pasted image 20221024161156.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221024161156.png)
 
 Now let's remove from training and validation sets features which tend to ``0`` .
 ```python
@@ -221,12 +220,12 @@ m = rf(filtered_xs, y)
 ```python
 mean_absolute_error(m.predict(filtered_xs), y), mean_absolute_error(m.predict(filtered_valid_xs), valid_y)
 ```
-![[Pasted image 20221024161755.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221024161755.png)
 
 ```python
 m.oob_score_
 ```
-![[Pasted image 20221025161630.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025161630.png)
 
 Has been achieved few improvements:
 - ``mean_absolute_error`` on training set is smaller: from ``47.06`` to ``46.78``;
@@ -247,7 +246,7 @@ def corr_filter(x: pd.DataFrame, bound: float):
 
 corr_filter(filtered_xs, .8)
 ```
-![[Pasted image 20221025101554.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025101554.png)
 Giving a threshold of ``0.8``, function will return set of elements highly correlated with a score from ``0.8`` to ``0.9999``.
 
 For a better understanding, worth to visualize them.
@@ -262,7 +261,7 @@ plt.figure(figsize=(30,10))
 sn.heatmap(compressed_xs, annot=True, cmap="Reds")
 plt.show()
 ```
-![[Pasted image 20221024163716.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221024163716.png)
 
 An alternative to ``heatmap`` is the helper function ``cluster_columns`` which implement a ``dendrogram`` chart.
 [link to dendogram chart. understand and create a separated post for each important function]
@@ -290,7 +289,7 @@ def get_oob(df):
 ```python
 get_oob(filtered_xs)
 ```
-![[Pasted image 20221025162507.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025162507.png)
 ```python
 to_drop = ["id", "timestamp", "slim_alloy", "id_alloy", "pairing_alloy",
            "international_alloy", "id_user", "address",
@@ -299,7 +298,7 @@ to_drop = ["id", "timestamp", "slim_alloy", "id_alloy", "pairing_alloy",
 ```python
 {c:get_oob(filtered_xs.drop(c, axis=1)) for c in to_drop}
 ```
-![[Pasted image 20221025162546.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025162546.png)
 
 Going to remove only features with higher score.
 
@@ -315,11 +314,11 @@ m = rf(filtered_xs, y)
 mean_absolute_error(m.predict(filtered_xs), y), 
 mean_absolute_error(m.predict(filtered_valid_xs), valid_y)
 ```
-![[Pasted image 20221025104016.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025104016.png)
 ```python
 m.oob_score_
 ```
-![[Pasted image 20221025164058.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025164058.png)
 
 ### Intermediate Result
 
@@ -329,7 +328,7 @@ Removing redundant features help to prevent **overfitting**.
 ## Third Round
 
 As showed by Jeremy, Random Forest can sin of Extrapolation problem (:open_mouth:).
-![[Pasted image 20221025172423.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221025172423.png)
 
 It means, in this case, predictions are too low with new data.
 
@@ -347,7 +346,7 @@ is_valid = np.array([0]*len(filtered_xs) + [1]*len(filtered_valid_xs))
 m = rf(df_dom, is_valid)
 rf_feat_importance(m, df_dom)[:15]
 ```
-![[Pasted image 20221026103311.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221026103311.png)
 
 Now, for each feature which vary a lot from training set and validation set, try to drop and check ``mean_absolute_error``. Finally, select those that keep improving the model.
 
@@ -359,7 +358,7 @@ for c in ('id','weight', 'international_alloy', 'slim_alloy',
     m = rf(filtered_xs.drop(c,axis=1), y)
     print(c, mean_absolute_error(m.predict(filtered_valid_xs.drop(c,axis=1)), valid_y))
 ```
-![[Pasted image 20221026104401.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221026104401.png)
 
 Let's drop only ``slim_alloy``.
 ```python
@@ -371,13 +370,13 @@ valid_xs = filtered_valid_xs.drop(to_drop, axis=1)
 m = rf(xs_final, y)
 mean_absolute_error(m.predict(valid_xs), valid_y)
 ```
-![[Pasted image 20221026104546.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221026104546.png)
 
 Keep checking out of bag error:
 ```python
 m.oob_score_
 ```
-![[Pasted image 20221026104841.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221026104841.png)
 
 ### Intermediate Result
 
@@ -386,7 +385,7 @@ Good news, working on **out-of-domain data** has improved both ``mean_absolute_e
 - from ``0.7070`` to ``0.7072``, ``oob_score_``.
 
 What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there's still lot of room to improve.
-![[Pasted image 20221026110706.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221026110706.png)
 
 Some datapoints are consistently predicted wrong (dots at about ``-900/-1000`` and about ``900/1000``). Other visual tools like [Confusion matrix](https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix) , **prediction confidence**, [treeinterpreter](http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/) can help to analyze this behavior.  
 
@@ -395,7 +394,7 @@ Before to any hyper-mega-super tuning, I can try my last attempt removing older 
 The application which manage the weighting/labeling process of scraps has been release about 2 years ago. Wouldn't surprise me if I found some strange datapoints, especially during first period of usage where operators were not comfortable yet with the system.
 
 Re-processing whole steps removing older 12k datapoints, seems to have better baseline model.
-![[Pasted image 20221026121947.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221026121947.png)
 
 There's still miss-classification at around ``-900/-1000`` and ``900/1000``, but it's evident has been reached an improvement.
 
@@ -417,7 +416,7 @@ Remember to apply as much as possible [Pareto principle](https://en.wikipedia.or
 
 > ...roughly 80% of consequences come from 20% of causes...
 
-It mean to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.
+It means to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.
 
 So next steps:
 - I will implement a Neural Network model;
@@ -437,7 +436,8 @@ I've in mind already the application name: **Box ClassifAI**.
 - Partial dependency plots for multi-class-classifiers?
 - Could improve Random Forest model with additional information like weather data?
 
-If you have any suggestions, recommendations, or corrections please reach out to me.
+
+**If you have any suggestions, recommendations, or corrections please reach out to me.**
 
 ---
 
