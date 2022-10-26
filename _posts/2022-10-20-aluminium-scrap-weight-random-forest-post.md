@@ -327,7 +327,7 @@ Removing redundant features help to prevent **overfitting**.
 
 ## Third Round
 
-As showed by Jeremy, Random Forest can sin of Extrapolation problem (brain explosion emoticon).
+As showed by Jeremy, Random Forest can sin of Extrapolation problem (:open_mouth:).
 ![[Pasted image 20221025172423.png]]
 
 It means, in this case, predictions are too low with new data.
@@ -338,42 +338,109 @@ For this reason I've to make sure validation set does not contain **out-of-domai
 
 ### Out-of-Domain Data
 
+How to understand if the data is distributed quite properly on training set and validation set?
 ```python
-df_dom = pd.concat([xs_final, valid_xs_final])
-is_valid = np.array([0]*len(xs_final) + [1]*len(valid_xs_final))
+df_dom = pd.concat([filtered_xs, filtered_valid_xs])
+is_valid = np.array([0]*len(filtered_xs) + [1]*len(filtered_valid_xs))
 
 m = rf(df_dom, is_valid)
-rf_feat_importance(m, df_dom)[:6]
+rf_feat_importance(m, df_dom)[:15]
 ```
+![[Pasted image 20221026103311.png]]
 
-**link to data leakage jeremy and scientific docs
-look at questions and reflections of Random-Forest-Aluminium-Tare-Weight-Copy1.ipynb
-use funny image and diagrams
-look if preprocessing is the right step which do all this stuff
-~do not put code but put image of output~
-data normalization can affect random forest regressor
-Retweet, save a life**
+Now, for each feature which vary a lot from training set and validation set, try to drop and check ``mean_absolute_error``. Finally, select those that keep improving the model.
 
-## KO
+```python
+print('orig', mean_absolute_error(m.predict(filtered_valid_xs), valid_y))
 
+for c in ('id','weight', 'international_alloy', 'slim_alloy',
+          'pairing_alloy', 'id_machine_article_description', 'location_name', "last_name"):
+    m = rf(filtered_xs.drop(c,axis=1), y)
+    print(c, mean_absolute_error(m.predict(filtered_valid_xs.drop(c,axis=1)), valid_y))
+```
+![[Pasted image 20221026104401.png]]
 
-## Open Points
-- What would happen if I play with categorical and continuous variables? Can them affect the prediction?
-- Plotting ``dendogram`` and removing most correlated columns. Does it change the prediction? Are columns the same?
-- Why is confidence of prediction totally wrong when the deviation reach ``100``? Why is prediction not so bad with greater value? 
-- Partial dependency plots for multi-class-classifiers?
+Let's drop only ``slim_alloy``.
+```python
+to_drop = ['slim_alloy']
+
+xs_final = filtered_xs.drop(to_drop, axis=1)
+valid_xs = filtered_valid_xs.drop(to_drop, axis=1)
+
+m = rf(xs_final, y)
+mean_absolute_error(m.predict(valid_xs), valid_y)
+```
+![[Pasted image 20221026104546.png]]
+
+Keep checking out of bag error:
+```python
+m.oob_score_
+```
+![[Pasted image 20221026104841.png]]
+
+### Intermediate Result
+
+Good news, working on **out-of-domain data** has improved both ``mean_absolute_error`` either ``oob_score_``:
+- from ``74.09`` KG to ``73.98`` KG, validation set;
+- from ``0.7070`` to ``0.7072``, ``oob_score_``.
+
+What I have achieved so far are only small improvements. Looking at a simple chart which plots the delta between real value and prediction, I can see there's still lot of room to improve.
+![[Pasted image 20221026110706.png]]
+
+Some datapoints are consistently predicted wrong (dots at about ``-900/-1000`` and about ``900/1000``). Other visual tools like [Confusion matrix](https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html?highlight=confusion+matrix) , **prediction confidence**, [treeinterpreter](http://blog.datadive.net/random-forest-interpretation-with-scikit-learn/) can help to analyze this behavior.  
+
+### Fourth Round
+Before to any hyper-mega-super tuning, I can try my last attempt removing older data.  Why?
+The application which manage the weighting/labeling process of scraps has been release about 2 years ago. Wouldn't surprise me if I found some strange datapoints, especially during first period of usage where operators were not comfortable yet with the system.
+
+Re-processing whole steps removing older 12k datapoints, seems to have better baseline model.
+![[Pasted image 20221026121947.png]]
+
+There's still miss-classification at around ``-900/-1000`` and ``900/1000``, but it's evident has been reached an improvement.
+
+### Final Result
+- from  ``73.98`` KG to ``72.17`` KG, validation set;
+- from ``0.7072`` to ``0.7141``, ``oob_score_``.
+
+I think as baseline model is really good: fast to fit, easily interpretable and quite stable.
+All this with with few KBs of data, a laptop and a mediocre baseline model. 
 
 ## What's Next?
-- NN with simplified dataset.
-- Would be nice to add additional information. Start with weather data.
-- Developing an alert system where departments are notified every time the prediction of model is too different from what's happening during the weighting process.
-- Combining computer vision model with the best model on tabular data.
+
+Once created a baseline model a simplified dataset, now it's time to make a decision: 
+- creating a NN model
+- or working on Radom Forest tuning
+- or switching to XGBoost model 
+
+Remember to apply as much as possible [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle):
+
+> ...roughly 80% of consequences come from 20% of causes...
+
+It mean to try to leverage and get as good result as soon as possible while keeping to the minimum the effort.
+
+So next steps:
+- I will implement a Neural Network model;
+- then I'll combine NN with Random Forest;
+- the ensembles will work in parallel with a Computer Vision model which will try to classify the same problem (a box of scraps). 
+
+All this staff is aimed to develop an alert system where departments are notified every time the prediction of models are too different from what's happening during the weighting process. 
+
+I've in mind already the application name: **Box ClassifAI**.
+
+**Keep lower scraps errors and push higher revenue. That's it.**
+
+## Open Points
+- What happens if I play with categorical and continuous variables? Can them affect the prediction?
+- Plotting ``dendogram`` and removing most correlated columns. Does it change the prediction? Are columns the same?
+- Why is confidence of prediction totally wrong when the deviation reach value ``100``? Why is prediction not so bad with greater value? 
+- Partial dependency plots for multi-class-classifiers?
+- Could improve Random Forest model with additional information like weather data?
 
 If you have any suggestions, recommendations, or corrections please reach out to me.
 
 ---
 
-[^1]: We have developed few tools to speed up and manage the weighting and labelling process of the Aluminium scarp
+[^1]: We have developed few tools to speed up and manage the weighting and labelling process of the Aluminium scarps
 [^2]:
 [^3]: 
 [^4]:
