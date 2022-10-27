@@ -10,7 +10,7 @@ title: How Random Forest Can Empower A Plant
 ## Preamble
 While the entire world is totally captured by Stable Diffusion, I'm experimenting **randomly into the forest of Random Forest**. Here my 2 cents after about 60+ hours of fighting against Random Forest. Actually [Forrest](https://en.wikipedia.org/wiki/Forrest_Gump) is winning the game.
 
-### Why predicting Scraps Boxes weight?
+### Why Predicting Scraps Boxes Weight?
 It's hard to fight entropy in my home. 
 
 It's exponentially hard to fight entropy in a plant, in an Aluminium plant precisely.
@@ -414,7 +414,7 @@ Before any hyper-mega-super-giga tuning, my last attempt is to remove older data
 
 Why? The application which manages the weighting/labeling process of scraps[^1] has been released about 2 years ago. Wouldn't surprise me if I found some strange data points, especially during first period of usage where operators were not comfortable yet with the system.
 
-Re-processing whole steps removing older 12k datapoints, seems to have better baseline model.
+Re-processing whole steps removing older 12k datapoints, seems to have generated a better baseline.
 ![]({{ site.baseurl }}/images/Pasted image 20221026121947.png)
 
 There's still miss-classification at around ``-900/-1000`` and ``900/1000``, it's worth investigating. However it's evident has been achieved an improvement.
@@ -464,7 +464,7 @@ I've in mind already the application name: **Box ClassifAI**.
 
 
 
-**If you have any suggestions, recommendations, or corrections please reach out to me.**
+**If you have any suggestions, recommendations, or corrections please [reach out to me](https://twitter.com/bot_fra).**
 
 ---
 
