@@ -153,7 +153,7 @@ There's so much resources where explain acutely and precisely what the hell OOB 
 
 ### Intermediate Result
 
-|Round|OB Score|MAE Training set |MAE Validation set|
+|Round|OOB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
 |**1**  |**``0.709``**  | **``47.06``**|**``73.49``**|
 
@@ -330,7 +330,7 @@ m.oob_score_
 ### Intermediate Result
 
 
-|Round|OB Score|MAE Training set |MAE Validation set|
+|Round|OOB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
 |1|``0.709``  | ``47.06``|`73.49`|
 |**2**|**``0.708``**   |**`49.37`**|**``74.09``**|
@@ -394,7 +394,7 @@ m.oob_score_
 
 ### Intermediate Result
 
-|Round|OB Score|MAE Training set |MAE Validation set|
+|Round|OOB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
 |1|``0.709``  | ``47.06``|`73.49`|
 |2|``0.708``   |`49.37`|``74.09``|
@@ -421,7 +421,7 @@ There's still miss-classification at around ``-900/-1000`` and ``900/1000``, it'
 
 ### Result
 
-|Round|OB Score|MAE Training set |MAE Validation set|
+|Round|OOB Score|MAE Training set |MAE Validation set|
 |---|---|---|---|
 |1|``0.709``  | ``47.06``|`73.49`|
 |2|``0.708``   |`49.37`|``74.09``|
