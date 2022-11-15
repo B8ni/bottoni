@@ -38,11 +38,10 @@ baseurl: "/bottoni" # the subpath of your site, e.g. "/blog".
 
 # Github and twitter are optional:
 minima:
-    social_links:
-        - { platform: github,  user_url: "https://github.com/B8ni" }
-        - { platform: twitter, user_url: "https://twitter.com/bot_fra" }
-        - { platform: rss, user_url: "https://github.com/B8ni"}
-
+  social_links:
+    - { platform: github,  user_url: "https://github.com/B8ni" }
+    - { platform: twitter, user_url: "https://twitter.com/bot_fra" }
+    - { platform: rss, user_url: "https://github.com/B8ni"}
 # Set this to true to get LaTeX math equation support
 use_math: 
 
