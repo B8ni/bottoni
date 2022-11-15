@@ -17,7 +17,7 @@ Confusion Matrix can answer to the questions:
 - Which one I constantly missed?
 
 Confusion Matrix is composed by following components:
-![[Pasted image 20221115151024.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221115151024.png)
 
 What's TP? 
 - True Positive: it's what the model have predicted right. On my [current work]() I'm trying to predict the weight of a box (about `11` classes). The box weight `750`? Yes, it falls into TP recipient. If not, it falls into FP.
