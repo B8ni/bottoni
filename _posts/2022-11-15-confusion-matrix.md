@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: Wikibot Confusion Matrix.
-categories: [wiki, confusion, matrix]
+categories: [wiki]
 title: Confusion Matrix
 ---
 
