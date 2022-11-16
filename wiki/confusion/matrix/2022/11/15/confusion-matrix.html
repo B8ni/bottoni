@@ -102,18 +102,11 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#confusion-matrix">Confusion Matrix</a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#whats-confusion-matrix">What’s Confusion Matrix</a></li>
 <li class="toc-entry toc-h2"><a href="#when-confusion-matrix">When Confusion Matrix</a></li>
 <li class="toc-entry toc-h2"><a href="#why-confusion-matrix">Why Confusion Matrix</a></li>
 <li class="toc-entry toc-h2"><a href="#implementation">Implementation</a></li>
-</ul>
-</li>
-</ul><h1 id="confusion-matrix">
-<a class="anchor" href="#confusion-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Confusion Matrix</h1>
-
-<h2 id="whats-confusion-matrix">
+</ul><h2 id="whats-confusion-matrix">
 <a class="anchor" href="#whats-confusion-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s Confusion Matrix</h2>
 
 <p>Confusion Matrix, is a <strong>matrix</strong> and… we all agree.</p>
@@ -125,11 +118,11 @@ window.onload = wrap_img;
 </ul>
 
 <p>Confusion Matrix is composed by following components:
-![[Pasted image 20221115151024.png]]</p>
+![](/bottoni/images/Pasted image 20221115151024.png “”)</p>
 
 <p>What’s TP?</p>
 <ul>
-  <li>True Positive: it’s what the model have predicted right. On my <a href="">current work</a> I’m trying to predict the weight of a box (about <code class="language-plaintext highlighter-rouge">11</code> classes). The box weight <code class="language-plaintext highlighter-rouge">750</code>? Yes, it falls into TP recipient. If not, it falls into FP.
+  <li>True Positive: it’s what the model have predicted right. On my <a href="https://b8ni.github.io/bottoni/fastai/2022/10/26/aluminium-scraps-box-weight-random-forest-post.html">current work</a> I’m trying to predict the weight of a box (about <code class="language-plaintext highlighter-rouge">11</code> classes). The box weight <code class="language-plaintext highlighter-rouge">750</code>? Yes, it falls into TP recipient. If not, it falls into FP.
 What’s FP?</li>
   <li>False Positive:  it’s what the model have predicted wrong. The model thought the box weight <code class="language-plaintext highlighter-rouge">750</code> KG but it isn’t. Wrong prediction.
 What’s TN:</li>
