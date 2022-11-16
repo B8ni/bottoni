@@ -6,8 +6,6 @@ categories: [wiki, confusion, matrix]
 title: Confusion Matrix
 ---
 
-# Confusion Matrix
-
 ## What's Confusion Matrix
 
 Confusion Matrix, is a **matrix** and... we all agree.
@@ -17,10 +15,10 @@ Confusion Matrix can answer to the questions:
 - Which one I constantly missed?
 
 Confusion Matrix is composed by following components:
-![[Pasted image 20221115151024.png]]
+![]({{ site.baseurl }}/images/Pasted image 20221115151024.png "")
 
 What's TP? 
-- True Positive: it's what the model have predicted right. On my [current work]() I'm trying to predict the weight of a box (about `11` classes). The box weight `750`? Yes, it falls into TP recipient. If not, it falls into FP.
+- True Positive: it's what the model have predicted right. On my [current work](https://b8ni.github.io/bottoni/fastai/2022/10/26/aluminium-scraps-box-weight-random-forest-post.html) I'm trying to predict the weight of a box (about `11` classes). The box weight `750`? Yes, it falls into TP recipient. If not, it falls into FP.
 What's FP?
 - False Positive:  it's what the model have predicted wrong. The model thought the box weight ``750`` KG but it isn't. Wrong prediction.
 What's TN:
