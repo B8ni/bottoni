@@ -122,12 +122,21 @@ window.onload = wrap_img;
 
 <p>What’s TP?</p>
 <ul>
-  <li>True Positive: it’s what the model have predicted right. On my <a href="https://b8ni.github.io/bottoni/fastai/2022/10/26/aluminium-scraps-box-weight-random-forest-post.html">current work</a> I’m trying to predict the weight of a box (about <code class="language-plaintext highlighter-rouge">11</code> classes). The box weight <code class="language-plaintext highlighter-rouge">750</code>? Yes, it falls into TP recipient. If not, it falls into FP.
-What’s FP?</li>
-  <li>False Positive:  it’s what the model have predicted wrong. The model thought the box weight <code class="language-plaintext highlighter-rouge">750</code> KG but it isn’t. Wrong prediction.
-What’s TN:</li>
-  <li>True Negative: the model understood that box weight isn’t <code class="language-plaintext highlighter-rouge">750</code> KG. It falls into TN recipient. If not, it falls into FN.
-What’s FN:</li>
+  <li>True Positive: it’s what the model have predicted right. On my <a href="https://b8ni.github.io/bottoni/fastai/2022/10/26/aluminium-scraps-box-weight-random-forest-post.html">current work</a> I’m trying to predict the weight of a box (about <code class="language-plaintext highlighter-rouge">11</code> classes). The box weight <code class="language-plaintext highlighter-rouge">750</code>? Yes, it falls into TP recipient. If not, it falls into FP.</li>
+</ul>
+
+<p>What’s FP?</p>
+<ul>
+  <li>False Positive:  it’s what the model have predicted wrong. The model thought the box weight <code class="language-plaintext highlighter-rouge">750</code> KG but it isn’t. Wrong prediction.</li>
+</ul>
+
+<p>What’s TN:</p>
+<ul>
+  <li>True Negative: the model understood that box weight isn’t <code class="language-plaintext highlighter-rouge">750</code> KG. It falls into TN recipient. If not, it falls into FN.</li>
+</ul>
+
+<p>What’s FN:</p>
+<ul>
   <li>False Negative: the model predicted <code class="language-plaintext highlighter-rouge">not 750</code> KG and was wrong. It falls into FN recipient. it’s the opposite behavior of FP. Someone would say: <a href="https://jamesclear.com/inversion">invert. always invert</a>
 </li>
 </ul>
