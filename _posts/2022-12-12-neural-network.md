@@ -123,7 +123,7 @@ for i in range(10):
 2. [ ] Develop a Neural Network from scratch
 
 ---
-## References:
+## References
 - [Neural net foundations - Jeremy Howard, 2022](https://course.fast.ai/Lessons/lesson3.html)
 - [How does a neural net really work? - Jeremy Howard, 2022](https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work)
 - Chatting with [ChatGPT](https://chat.openai.com/)
