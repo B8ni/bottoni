@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Neural Network | frabot</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Neural Network" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wikibot Neural Network." />
+<meta property="og:description" content="Wikibot Neural Network." />
+<link rel="canonical" href="https://b8ni.github.io/bottoni/wiki/neural/network/2022/12/12/neural-network.html" />
+<meta property="og:url" content="https://b8ni.github.io/bottoni/wiki/neural/network/2022/12/12/neural-network.html" />
+<meta property="og:site_name" content="frabot" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-12-12T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Neural Network" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-12T00:00:00-06:00","datePublished":"2022-12-12T00:00:00-06:00","description":"Wikibot Neural Network.","headline":"Neural Network","mainEntityOfPage":{"@type":"WebPage","@id":"https://b8ni.github.io/bottoni/wiki/neural/network/2022/12/12/neural-network.html"},"url":"https://b8ni.github.io/bottoni/wiki/neural/network/2022/12/12/neural-network.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/bottoni/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://b8ni.github.io/bottoni/feed.xml" title="frabot" /><link rel="shortcut icon" type="image/x-icon" href="/bottoni/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/bottoni/">frabot</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/bottoni/about/">About Me</a><a class="page-link" href="/bottoni/search/">Search</a><a class="page-link" href="/bottoni/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Neural Network</h1><p class="page-description">Wikibot Neural Network.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-12-12T00:00:00-06:00" itemprop="datePublished">
+        Dec 12, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/bottoni/categories/#wiki">wiki</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/bottoni/categories/#neural">neural</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/bottoni/categories/#network">network</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#one-liner-definition">One Liner Definition</a></li>
+<li class="toc-entry toc-h2"><a href="#motivation">Motivation</a></li>
+<li class="toc-entry toc-h2"><a href="#implementation">Implementation</a></li>
+<li class="toc-entry toc-h2"><a href="#take-away">Take Away</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#further-work">Further Work</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#references">References:</a></li>
+</ul><h2 id="one-liner-definition">
+<a class="anchor" href="#one-liner-definition" aria-hidden="true"><span class="octicon octicon-link"></span></a>One Liner Definition</h2>
+<p>Neural Network is a mathematical function.</p>
+
+<p>This mathematical function is based on inputs and parameters.</p>
+
+<p>Inputs and parameters are multiplied and added them up. Negative values are set to zero.</p>
+
+<p>These operations are repeated untill the error of prediction is minimized.</p>
+
+<h2 id="motivation">
+<a class="anchor" href="#motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation</h2>
+
+<p>These 3 simple steps are the foundation of any deep learning model.</p>
+
+<p>Implicitally they touch most important parts of NN:</p>
+<ol>
+  <li>Inputs and parameters are multiplied and added them up =&gt; <a href="">Matrix multiplication</a>;</li>
+  <li>Negative values are set to zero =&gt; <a href="">Rectified Linear function</a>;</li>
+  <li>Operations repeated untill error of prediction is minimized =&gt; <a href="">Gradient descent</a> on <a href="">Loss function</a>.</li>
+</ol>
+
+<p>The most complex deep learning model is built on these foundamentals. Deeply understanding them will help to breaking every complex model out.</p>
+
+<h2 id="implementation">
+<a class="anchor" href="#implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span>  <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">quad</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">noise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mult</span><span class="p">,</span> <span class="n">add</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">noise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mult</span><span class="p">))</span> <span class="o">+</span> <span class="n">noise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">add</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">20</span><span class="p">)[:,</span><span class="bp">None</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">add_noise</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="k">def</span> <span class="nf">mk_quad</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span> <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="n">quad</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mae</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">actual</span><span class="p">):</span> <span class="k">return</span> <span class="n">torch</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">pred</span><span class="o">-</span><span class="n">actual</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">quad_mae</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">mk_quad</span><span class="p">(</span><span class="o">*</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mae</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">abc</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">abc</span><span class="p">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+<span class="n">loss</span> <span class="o">=</span> <span class="n">quad_mae</span><span class="p">(</span><span class="n">abc</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">quad_mae</span><span class="p">(</span><span class="n">abc</span><span class="p">)</span>
+    <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span> <span class="n">abc</span> <span class="o">-=</span> <span class="n">abc</span><span class="p">.</span><span class="n">grad</span><span class="o">*</span><span class="mf">0.01</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'step=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s">; loss=</span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>step=0; loss=2.42
+step=1; loss=2.40
+step=2; loss=2.36
+step=3; loss=2.30
+step=4; loss=2.21
+step=5; loss=2.11
+step=6; loss=1.98
+step=7; loss=1.85
+step=8; loss=1.72
+step=9; loss=1.58
+</code></pre></div></div>
+
+<h2 id="take-away">
+<a class="anchor" href="#take-away" aria-hidden="true"><span class="octicon octicon-link"></span></a>Take Away</h2>
+
+<ol>
+  <li>
+<a href="">Matrix multiplication</a> is the key to quickly calculate multuplication and addition of inputs and parameters.</li>
+  <li>
+<a href="">Gradient descent</a> is the tool used to understand how to minimize the loss function, since loss function composed by parameters <code class="language-plaintext highlighter-rouge">abc</code>.</li>
+  <li>
+<a href="">Rectified Linear function</a>, known as <a href="">ReLU</a>, is a linear function which takes input and the ouput is equals to the input. If the input is negative the output is zero. It’s defined as: $f(x) = max(0, x)$</li>
+</ol>
+
+<h3 id="further-work">
+<a class="anchor" href="#further-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>Further Work</h3>
+<ol class="task-list">
+  <li>Ankify:
+    <ul class="task-list">
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>Matrix multiplication</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>Gradient descent</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>ReLU</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>End to end GD which every DL model is based on</li>
+    </ul>
+  </li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>Develop a Neural Network from scratch</li>
+</ol>
+
+<hr>
+<h2 id="references">
+<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References:</h2>
+<ul>
+  <li><a href="https://course.fast.ai/Lessons/lesson3.html">Neural net foundations - Jeremy Howard, 2022</a></li>
+  <li><a href="https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work">How does a neural net really work? - Jeremy Howard, 2022</a></li>
+  <li>Chatting with <a href="https://chat.openai.com/">ChatGPT</a>
+</li>
+</ul>
+
+  </div><a class="u-url" href="/bottoni/wiki/neural/network/2022/12/12/neural-network.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/bottoni/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/bottoni/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/bottoni/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Open notes</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li>
+  <a rel="me" href="https://github.com/B8ni" target="_blank" title="github">
+    <svg class="svg-icon grey">
+      <use xlink:href="/bottoni/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://twitter.com/bot_fra" target="_blank" title="twitter">
+    <svg class="svg-icon grey">
+      <use xlink:href="/bottoni/assets/minima-social-icons.svg#twitter"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
