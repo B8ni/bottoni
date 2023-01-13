@@ -4,4 +4,4 @@ title: About Me
 permalink: /about/
 ---
 
-## There is still nothing to say about me.
+## There's nothing to say about me. I'm another human being, like you.
