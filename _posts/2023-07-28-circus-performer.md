@@ -1,8 +1,8 @@
 ---
 toc: false
 layout: post
-description: Why Startups Need to Embrace the Circus Performer Mentality.
-categories: [startup, idea, 2023]
+description: Embrace the Circus Performer Mentality.
+categories: [startup, 2023]
 title: Be Like a Circus Performer
 ---
 
